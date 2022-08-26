@@ -14,7 +14,7 @@
 		<file>parallelTool.groovy</file>
 	</parallelCadEngine>
 
-<name>Fanuc_Delta_DR-3iB</name>
+<name>Fanuc_Delta_DR</name>
 <appendage>
 
 <name>Standard6dofArm1</name>
@@ -134,7 +134,7 @@
 
 	<DHParameters>
 		<Delta>200.0</Delta>
-		<Theta>141.4285714285715</Theta>
+		<Theta>180.0</Theta>
 		<Radius>0.0</Radius>
 		<Alpha>90.0</Alpha>
 	</DHParameters>
@@ -190,7 +190,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>0.0</Theta>
+		<Theta>-90.0</Theta>
 		<Radius>0.0</Radius>
 		<Alpha>90.0</Alpha>
 	</DHParameters>
@@ -610,13 +610,13 @@
 </link>
 
 <ZframeToRAS
->	<x>-386.84627008322695</x>
-	<y>50.81481944138565</y>
-	<z>242.845723808102</z>
-	<rotw>0.38967569524939377</rotw>
-	<rotx>-0.7925538438458761</rotx>
-	<roty>0.03796948586869195</roty>
-	<rotz>-0.46751425141902925</rotz>
+>	<x>0.0</x>
+	<y>0.0</y>
+	<z>0.0</z>
+	<rotw>1.0</rotw>
+	<rotx>-0.0</rotx>
+	<roty>-0.0</roty>
+	<rotz>-0.0</rotz>
 </ZframeToRAS>
 
 <baseToZframe>
@@ -811,13 +811,13 @@
 </link>
 
 <ZframeToRAS
->	<x>-386.84627008322695</x>
-	<y>50.81481944138565</y>
-	<z>242.845723808102</z>
-	<rotw>0.38967569524939377</rotw>
-	<rotx>-0.7925538438458761</rotx>
-	<roty>0.03796948586869195</roty>
-	<rotz>-0.46751425141902925</rotz>
+>	<x>0.0</x>
+	<y>0.0</y>
+	<z>0.0</z>
+	<rotw>1.0</rotw>
+	<rotx>-0.0</rotx>
+	<roty>-0.0</roty>
+	<rotz>-0.0</rotz>
 </ZframeToRAS>
 
 <baseToZframe>
@@ -833,13 +833,13 @@
 </appendage>
 
 <ZframeToRAS>
-	<x>-386.84627008322695</x>
-	<y>50.81481944138565</y>
-	<z>242.845723808102</z>
-	<rotw>0.38967569524939377</rotw>
-	<rotx>-0.7925538438458761</rotx>
-	<roty>0.03796948586869195</roty>
-	<rotz>-0.46751425141902925</rotz>
+	<x>0.0</x>
+	<y>0.0</y>
+	<z>0.0</z>
+	<rotw>1.0</rotw>
+	<rotx>-0.0</rotx>
+	<roty>-0.0</roty>
+	<rotz>-0.0</rotz>
 </ZframeToRAS>
 
 <baseToZframe>
@@ -888,13 +888,13 @@
 </ZframeToRAS>
 
 <baseToZframe>
-	<x>-200.0</x>
+	<x>0.0</x>
 	<y>0.0</y>
 	<z>0.0</z>
-	<rotw>0.5000654493707987</rotw>
-	<rotx>0.50002181233196</rotx>
-	<roty>-0.4999781791006751</roty>
-	<rotz>0.4999345496772718</rotz>
+	<rotw>1.0</rotw>
+	<rotx>-0.0</rotx>
+	<roty>-0.0</roty>
+	<rotz>-1.590277348802349E-13</rotz>
 </baseToZframe>
 
 </appendage>
