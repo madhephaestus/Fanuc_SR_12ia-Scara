@@ -118,13 +118,24 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		double baseVectorAngle = Math.atan2(y , x);
 		def elbowLink1CompositeLength = length(l1Offset)
 		def elbowLink2CompositeLength=length(l3Offset)
+		def wristVect = length(virtualcenter)
 		if(debug)println "elbowLink1CompositeLength "+elbowLink1CompositeLength
 		if(debug)println "elbowLink2CompositeLength "+elbowLink2CompositeLength
-		double elbowTiltAngle =-( Math.toDegrees(Math.acos(
-			(Math.pow(elbowLink2CompositeLength,2)+Math.pow(elbowLink1CompositeLength,2))/
+		if(debug)println "Elbo Hypotinuse "+wristVect
+		double elbowTiltAngle =-( Math.toDegrees(
+			Math.acos(
+			(
+				Math.pow(elbowLink2CompositeLength,2)+
+				Math.pow(elbowLink1CompositeLength,2)
+				-Math.pow(wristVect,2)
+				)
+			/
 			(2*elbowLink2CompositeLength*elbowLink1CompositeLength)
-			)))
+			)
+			))
 		if(debug)println "Elbow angle "+elbowTiltAngle
+		
+		jointSpaceVector[2]=elbowTiltAngle
 		
 		return jointSpaceVector
 /*
