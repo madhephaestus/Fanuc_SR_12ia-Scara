@@ -8,11 +8,18 @@
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
 		<file>walking.groovy</file>
 	</driveEngine>
+	<parallelCadEngine>
+		<parallelGroup>delta</parallelGroup>
+		<git>https://gist.github.com/33f2c10ab3adc5bd91f0a58ea7f24d14.git</git>
+		<file>parallelTool.groovy</file>
+	</parallelCadEngine>
 
 <name>Fanuc_Delta_DR-3iB</name>
 <appendage>
 
 <name>Standard6dofArm1</name>
+
+<parallelGroup>delta</parallelGroup>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
 		<file>cadGenHephaestusArm.groovy</file>
@@ -894,6 +901,8 @@
 <appendage>
 
 <name>Standard6dofArm2</name>
+
+<parallelGroup>delta</parallelGroup>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
 		<file>cadGenHephaestusArm.groovy</file>
@@ -1319,6 +1328,8 @@
 <appendage>
 
 <name>Standard6dofArm3</name>
+
+<parallelGroup>delta</parallelGroup>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
 		<file>cadGenHephaestusArm.groovy</file>
