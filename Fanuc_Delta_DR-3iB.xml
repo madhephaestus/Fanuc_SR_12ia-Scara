@@ -903,6 +903,20 @@
 <name>Standard6dofArm2</name>
 
 <parallelGroup>delta</parallelGroup>
+
+<parallelGroupTipOffset>
+	<x>0.0</x>
+	<y>0.0</y>
+	<z>0.0</z>
+	<rotw>1.0</rotw>
+	<rotx>-0.0</rotx>
+	<roty>-0.0</roty>
+	<rotz>-0.0</rotz>
+	<relativeTo>Standard6dofArm1</relativeTo>
+
+	<relativeToLink>6</relativeToLink>
+
+</parallelGroupTipOffset>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
 		<file>cadGenHephaestusArm.groovy</file>
@@ -1330,6 +1344,20 @@
 <name>Standard6dofArm3</name>
 
 <parallelGroup>delta</parallelGroup>
+
+<parallelGroupTipOffset>
+	<x>0.0</x>
+	<y>0.0</y>
+	<z>0.0</z>
+	<rotw>1.0</rotw>
+	<rotx>-0.0</rotx>
+	<roty>-0.0</roty>
+	<rotz>-0.0</rotz>
+	<relativeTo>Standard6dofArm1</relativeTo>
+
+	<relativeToLink>6</relativeToLink>
+
+</parallelGroupTipOffset>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
 		<file>cadGenHephaestusArm.groovy</file>
