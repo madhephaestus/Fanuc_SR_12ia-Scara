@@ -135,7 +135,7 @@ public class scriptJavaIKModel implements DhInverseSolver {
 			))
 		if(debug)println "Elbow angle "+elbowTiltAngle
 		
-		jointSpaceVector[2]=elbowTiltAngle
+		jointSpaceVector[2]=elbowTiltAngle - Math.toDegrees(links.get(2).getTheta())
 		
 		return jointSpaceVector
 /*
