@@ -610,13 +610,13 @@
 </link>
 
 <ZframeToRAS
->	<x>0.0</x>
-	<y>0.0</y>
-	<z>0.0</z>
-	<rotw>1.0</rotw>
-	<rotx>-0.0</rotx>
-	<roty>-0.0</roty>
-	<rotz>-0.0</rotz>
+>	<x>-349.52647395827</x>
+	<y>-474.98696606153976</y>
+	<z>-846.9086229678265</z>
+	<rotw>0.9961870991939186</rotw>
+	<rotx>3.7990876505110523E-6</rotx>
+	<roty>0.08724254406966218</roty>
+	<rotz>-4.346752587374504E-5</rotz>
 </ZframeToRAS>
 
 <baseToZframe>
@@ -811,13 +811,13 @@
 </link>
 
 <ZframeToRAS
->	<x>0.0</x>
-	<y>0.0</y>
-	<z>0.0</z>
-	<rotw>1.0</rotw>
-	<rotx>-0.0</rotx>
-	<roty>-0.0</roty>
-	<rotz>-0.0</rotz>
+>	<x>-349.52647395827</x>
+	<y>-474.98696606153976</y>
+	<z>-846.9086229678265</z>
+	<rotw>0.9961870991939186</rotw>
+	<rotx>3.7990876505110523E-6</rotx>
+	<roty>0.08724254406966218</roty>
+	<rotz>-4.346752587374504E-5</rotz>
 </ZframeToRAS>
 
 <baseToZframe>
@@ -891,10 +891,10 @@
 	<x>-200.0</x>
 	<y>0.0</y>
 	<z>0.0</z>
-	<rotw>0.7071376338671591</rotw>
-	<rotx>0.7070759271597044</rotx>
-	<roty>-0.0</roty>
-	<rotz>-0.0</rotz>
+	<rotw>0.5000654493707987</rotw>
+	<rotx>0.50002181233196</rotx>
+	<roty>-0.4999781791006751</roty>
+	<rotz>0.4999345496772718</rotz>
 </baseToZframe>
 
 </appendage>
