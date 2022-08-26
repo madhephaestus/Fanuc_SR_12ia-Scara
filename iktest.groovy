@@ -9,9 +9,12 @@ MobileBase base=DeviceManager.getSpecificDevice( "Fanuc_Delta_DR",{ScriptingEngi
 
 
 
-println "Now we will move just one leg"
 DHParameterKinematics mainLimb = base.getAllDHChains().get(0)
-mainLimb.setDesiredTaskSpaceTransform(mainLimb.calcHome(), 0)
+double[] links = [-45,-45,15,0,0,0,0]
+
+mainLimb.setDesiredJointSpaceVector(links,0)
+
+mainLimb.setDesiredTaskSpaceTransform(mainLimb.forwardOffset(mainLimb.forwardKinematics(links)), 0)
 
 
 return null

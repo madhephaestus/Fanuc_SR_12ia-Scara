@@ -23,7 +23,7 @@ import org.apache.commons.math3.geometry.euclidean.threed.RotationOrder
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 
 public class scriptJavaIKModel implements DhInverseSolver {
-	boolean debug = false;
+	boolean debug = true;
 	CSG blue =null;
 	CSG green =null;
 	CSG red =null;
@@ -42,6 +42,15 @@ public class scriptJavaIKModel implements DhInverseSolver {
 	TransformNR linkOffset(DHLink link) {
 		return new TransformNR(link.DhStep(0))
 	}
+	double length(TransformNR tr) {
+		return Math.sqrt(
+			Math.pow(tr.getX(), 2)+
+			Math.pow(tr.getY(), 2)+
+			Math.pow(tr.getZ(), 2)
+			)
+	}
+	
+	
 	public double[] inverseKinematics6dof(TransformNR target, double[] jointSpaceVector, DHChain chain) {
 //		if(debug) {
 //			if(blue==null) {
@@ -62,7 +71,7 @@ public class scriptJavaIKModel implements DhInverseSolver {
 //			BowlerStudioController.addCsg(white)
 //			if(debug)Platform.runLater({TransformFactory.nrToAffine(target,white.getManipulator())})
 //		}
-		//System.out.println("My 6dof IK "+target);
+		System.out.println("\n\nMy 6dof IK "+target);
 		ArrayList<DHLink> links = chain.getLinks();
 		int linkNum = jointSpaceVector.length;
 		TransformNR l0Offset = linkOffset(links.get(0))
@@ -107,6 +116,18 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		}
 
 		double baseVectorAngle = Math.atan2(y , x);
+		def elbowLink1CompositeLength = length(l1Offset)
+		def elbowLink2CompositeLength=length(l3Offset)
+		if(debug)println "elbowLink1CompositeLength "+elbowLink1CompositeLength
+		if(debug)println "elbowLink2CompositeLength "+elbowLink2CompositeLength
+		double elbowTiltAngle =-( Math.toDegrees(Math.acos(
+			(Math.pow(elbowLink2CompositeLength,2)+Math.pow(elbowLink1CompositeLength,2))/
+			(2*elbowLink2CompositeLength*elbowLink1CompositeLength)
+			)))
+		if(debug)println "Elbow angle "+elbowTiltAngle
+		
+		return jointSpaceVector
+/*
 		double a1d = Math.toDegrees(baseVectorAngle);
 		// this projection number becomes the base link angle directly
 		jointSpaceVector[0]=a1d;
@@ -136,8 +157,6 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		}
 		if(debug)println "New Tip                             \tx="+x+" y="+y+" and z should be 0 and is="+z
 
-
-		//println newTip
 		// Tip y should be 0
 		// this is the angle of the vector from base to tip
 		double tipToBaseAngle = Math.atan2(y,x); // we now have the rest of the links in the XY plane
@@ -181,8 +200,8 @@ public class scriptJavaIKModel implements DhInverseSolver {
 				))+elbowLink2CompositeAngleDegrees-180)
 		jointSpaceVector[2]=elbowTiltAngle
 		jointSpaceVector[1]=shoulderTiltAngle
-		
-		
+*/		
+	
 		/**
 		// compute the top of the wrist now that the first 3 links are calculated
 		 * 
@@ -260,9 +279,9 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		RotationNR qWrist3=wristMOvedToCenter2.getRotation()
 		jointSpaceVector[5]=(Math.toDegrees(qWrist3.getRotationAzimuth())-Math.toDegrees(links.get(5).getTheta()))
 		
-		if(debug)Platform.runLater({TransformFactory.nrToAffine(wristMOvedToCenter0,blue.getManipulator())})
-		if(debug)Platform.runLater({TransformFactory.nrToAffine(wristMOvedToCenter1,green.getManipulator())})
-		if(debug)Platform.runLater({TransformFactory.nrToAffine(wristMOvedToCenter2,red.getManipulator())})
+//		if(debug)Platform.runLater({TransformFactory.nrToAffine(wristMOvedToCenter0,blue.getManipulator())})
+//		if(debug)Platform.runLater({TransformFactory.nrToAffine(wristMOvedToCenter1,green.getManipulator())})
+//		if(debug)Platform.runLater({TransformFactory.nrToAffine(wristMOvedToCenter2,red.getManipulator())})
 
 		for(int i=3;i<jointSpaceVector.length;i++) {
 			if(jointSpaceVector[i]>180)
