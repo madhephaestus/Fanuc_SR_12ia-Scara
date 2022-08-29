@@ -905,8 +905,8 @@
 <parallelGroup>delta</parallelGroup>
 
 <parallelGroupTipOffset>
-	<x>0.0</x>
-	<y>0.0</y>
+	<x>-100.0</x>
+	<y>100.0</y>
 	<z>0.0</z>
 	<rotw>1.0</rotw>
 	<rotx>-0.0</rotx>
@@ -929,7 +929,7 @@
 	<name>powered</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
-	<index>0</index>
+	<index>7</index>
 	<scale>1.0</scale>
 	<upperLimit>170.00001556208602</upperLimit>
 	<lowerLimit>-170.00001556208602</lowerLimit>
@@ -985,7 +985,7 @@
 	<name>spere-elbow-1</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
-	<index>1</index>
+	<index>8</index>
 	<scale>1.0</scale>
 	<upperLimit>122.49998088079637</upperLimit>
 	<lowerLimit>-122.49998088079637</lowerLimit>
@@ -1041,7 +1041,7 @@
 	<name>sphere-elbow-2</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
-	<index>2</index>
+	<index>9</index>
 	<scale>1.0</scale>
 	<upperLimit>215.00000620010186</upperLimit>
 	<lowerLimit>-215.00000620010186</lowerLimit>
@@ -1097,7 +1097,7 @@
 	<name>wrist1</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
-	<index>3</index>
+	<index>10</index>
 	<scale>1.0</scale>
 	<upperLimit>190.00002413359965</upperLimit>
 	<lowerLimit>-190.00002413359965</lowerLimit>
@@ -1153,7 +1153,7 @@
 	<name>wrist2</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
-	<index>4</index>
+	<index>11</index>
 	<scale>1.0</scale>
 	<upperLimit>125.0000249240702</upperLimit>
 	<lowerLimit>-125.0000249240702</lowerLimit>
@@ -1209,7 +1209,7 @@
 	<name>wrist3</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
-	<index>5</index>
+	<index>12</index>
 	<scale>1.0</scale>
 	<upperLimit>359.9999823999062</upperLimit>
 	<lowerLimit>-359.9999823999062</lowerLimit>
@@ -1265,7 +1265,7 @@
 	<name>ToolFrame</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
-	<index>6</index>
+	<index>13</index>
 	<scale>1.0</scale>
 	<upperLimit>1.0</upperLimit>
 	<lowerLimit>-1.0</lowerLimit>
@@ -1346,8 +1346,8 @@
 <parallelGroup>delta</parallelGroup>
 
 <parallelGroupTipOffset>
-	<x>0.0</x>
-	<y>0.0</y>
+	<x>100.0</x>
+	<y>-100.0</y>
 	<z>0.0</z>
 	<rotw>1.0</rotw>
 	<rotx>-0.0</rotx>
@@ -1370,7 +1370,7 @@
 	<name>powered</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
-	<index>0</index>
+	<index>14</index>
 	<scale>1.0</scale>
 	<upperLimit>170.00001556208602</upperLimit>
 	<lowerLimit>-170.00001556208602</lowerLimit>
@@ -1426,7 +1426,7 @@
 	<name>spere-elbow-1</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
-	<index>1</index>
+	<index>15</index>
 	<scale>1.0</scale>
 	<upperLimit>122.49998088079637</upperLimit>
 	<lowerLimit>-122.49998088079637</lowerLimit>
@@ -1482,7 +1482,7 @@
 	<name>sphere-elbow-2</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
-	<index>2</index>
+	<index>16</index>
 	<scale>1.0</scale>
 	<upperLimit>215.00000620010186</upperLimit>
 	<lowerLimit>-215.00000620010186</lowerLimit>
@@ -1538,7 +1538,7 @@
 	<name>wrist1</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
-	<index>3</index>
+	<index>17</index>
 	<scale>1.0</scale>
 	<upperLimit>190.00002413359965</upperLimit>
 	<lowerLimit>-190.00002413359965</lowerLimit>
@@ -1594,7 +1594,7 @@
 	<name>wrist2</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
-	<index>4</index>
+	<index>18</index>
 	<scale>1.0</scale>
 	<upperLimit>125.0000249240702</upperLimit>
 	<lowerLimit>-125.0000249240702</lowerLimit>
@@ -1650,7 +1650,7 @@
 	<name>wrist3</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
-	<index>5</index>
+	<index>19</index>
 	<scale>1.0</scale>
 	<upperLimit>359.9999823999062</upperLimit>
 	<lowerLimit>-359.9999823999062</lowerLimit>
@@ -1706,7 +1706,7 @@
 	<name>ToolFrame</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
-	<index>6</index>
+	<index>20</index>
 	<scale>1.0</scale>
 	<upperLimit>1.0</upperLimit>
 	<lowerLimit>-1.0</lowerLimit>
