@@ -29,7 +29,7 @@ public class deltaIK implements DhInverseSolver {
 	CSG red =null;
 	CSG white =null;
 	int limbIndex =0;
-	public scriptJavaIKModel(int index){
+	public deltaIK(int index){
 		limbIndex=index;
 	}
 	@Override
@@ -431,4 +431,4 @@ public class deltaIK implements DhInverseSolver {
 
 if(args==null)
 	args=[0]
-return new deltaIK (args[0])
+return new deltaIK(args[0])
