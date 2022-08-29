@@ -71,7 +71,7 @@ public class scriptJavaIKModel implements DhInverseSolver {
 //			BowlerStudioController.addCsg(white)
 //			if(debug)Platform.runLater({TransformFactory.nrToAffine(target,white.getManipulator())})
 //		}
-		System.out.println("\n\nMy 6dof IK "+target);
+		//System.out.println("\n\nMy 6dof IK "+target);
 		ArrayList<DHLink> links = chain.getLinks();
 		int linkNum = jointSpaceVector.length;
 		TransformNR l0Offset = linkOffset(links.get(0))
@@ -101,8 +101,8 @@ public class scriptJavaIKModel implements DhInverseSolver {
 
 			//if(debug)Platform.runLater({TransformFactory.nrToAffine(newCenter,tipPointer2.getManipulator())})
 		}
-		def virtualcenter = newCenter.times(new TransformNR(0,0,10,
-			 new RotationNR(Math.toDegrees(links.get(5).getAlpha()),0,0)))
+//		def virtualcenter = newCenter.times(new TransformNR(0,0,10,
+//			 new RotationNR(Math.toDegrees(links.get(5).getAlpha()),0,0)))
 		// recompute the X,y,z with the new center
 		z = newCenter.getZ();
 		y = newCenter.getY();
@@ -114,11 +114,11 @@ public class scriptJavaIKModel implements DhInverseSolver {
 			println "Singularity! try something else"
 			return inverseKinematics6dof(target.copy().translateX(0.01));
 		}
-
-		double baseVectorAngle = Math.atan2(y , x);
+		if(debug)println "Wrist center for IK "+x+","+y+","+z
+		double baseVectorAngle = Math.toDegrees(Math.atan2(y , x));
 		def elbowLink1CompositeLength = length(l1Offset)
 		def elbowLink2CompositeLength=length(l3Offset)
-		def wristVect = length(virtualcenter)
+		def wristVect = length(newCenter)
 		if(debug)println "elbowLink1CompositeLength "+elbowLink1CompositeLength
 		if(debug)println "elbowLink2CompositeLength "+elbowLink2CompositeLength
 		if(debug)println "Elbo Hypotinuse "+wristVect
@@ -134,8 +134,42 @@ public class scriptJavaIKModel implements DhInverseSolver {
 			)
 			))
 		if(debug)println "Elbow angle "+elbowTiltAngle
-		
 		jointSpaceVector[2]=elbowTiltAngle - Math.toDegrees(links.get(2).getTheta())
+		
+		def local = new TransformNR(0,0,0,new RotationNR(0, -baseVectorAngle, 0))
+		TransformNR tipOnXVect = local.times(newCenter)
+		double elZ = tipOnXVect.getZ()
+		double elX = tipOnXVect.getX()
+		double L1 = length(l1Offset)
+		double L2 = length(l3Offset)
+		
+		println "L1 "+L1+" l2 "+L2+" z "+elZ+" x "+elX
+		/** 
+		 * System of equasions 
+		 * Theta2 = asin(z/wristVect)
+		 * l3 = wristVect * cos( theta2)
+		 * theta1 = acos(l1^2+x^2-l3^2/2*l1*x)
+		 * 
+		 */
+		double theta2 = Math.asin(elZ/L2)
+		double L3 = L2*Math.cos(theta2)
+		double theta1 = Math.acos(
+			(
+				Math.pow(L1, 2) + 
+				Math.pow(elX, 2)-
+				Math.pow(L3, 2)
+				 )/
+			(2 * L1 *elX)	
+		)
+		jointSpaceVector[0]=-(90-(Math.toDegrees(theta1)+baseVectorAngle))
+		TransformNR reorent =new TransformNR(0,0,0,new RotationNR(0, -jointSpaceVector[0], 0))
+		TransformNR sphericalElbowTartget = reorent.times(newCenter)
+		//println newCenter 
+		//println 	sphericalElbowTartget
+		sphericalElbowTartget = new TransformNR(0.0,-sphericalElbowTartget.getY(),0.0, new RotationNR()).times(sphericalElbowTartget)
+		//println 	sphericalElbowTartget
+		double theta3 = Math.atan2(sphericalElbowTartget.getZ(), sphericalElbowTartget.getX())
+		jointSpaceVector[1]=-Math.toDegrees(theta3) 
 		
 		return jointSpaceVector
 /*

@@ -18,8 +18,6 @@
 <appendage>
 
 <name>Standard6dofArm1</name>
-
-<parallelGroup>delta</parallelGroup>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
 		<file>cadGenHephaestusArm.groovy</file>
