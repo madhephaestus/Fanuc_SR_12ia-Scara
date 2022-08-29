@@ -11,7 +11,7 @@ MobileBase base=DeviceManager.getSpecificDevice( "Fanuc_Delta_DR",{ScriptingEngi
 
 
 DHParameterKinematics mainLimb = base.getAllDHChains().get(0)
-double[] links = [-25,-35,30,0,0,0,0]
+double[] links = [-25,-35,30,0,4,0,0]
 
 mainLimb.setDesiredJointSpaceVector(links,0)
 

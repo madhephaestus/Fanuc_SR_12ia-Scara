@@ -23,7 +23,7 @@ import org.apache.commons.math3.geometry.euclidean.threed.RotationOrder
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 
 public class scriptJavaIKModel implements DhInverseSolver {
-	boolean debug = true;
+	boolean debug = false;
 	CSG blue =null;
 	CSG green =null;
 	CSG red =null;
@@ -101,8 +101,7 @@ public class scriptJavaIKModel implements DhInverseSolver {
 
 			//if(debug)Platform.runLater({TransformFactory.nrToAffine(newCenter,tipPointer2.getManipulator())})
 		}
-//		def virtualcenter = newCenter.times(new TransformNR(0,0,10,
-//			 new RotationNR(Math.toDegrees(links.get(5).getAlpha()),0,0)))
+
 		// recompute the X,y,z with the new center
 		z = newCenter.getZ();
 		y = newCenter.getY();
@@ -143,7 +142,7 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		double L1 = length(l1Offset)
 		double L2 = length(l3Offset)
 		
-		println "L1 "+L1+" l2 "+L2+" z "+elZ+" x "+elX
+		if(debug)println "L1 "+L1+" l2 "+L2+" z "+elZ+" x "+elX
 		/** 
 		 * System of equasions 
 		 * Theta2 = asin(z/wristVect)
@@ -171,82 +170,8 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		double theta3 = Math.atan2(sphericalElbowTartget.getZ(), sphericalElbowTartget.getX())
 		jointSpaceVector[1]=-Math.toDegrees(theta3) 
 		
-		return jointSpaceVector
-/*
-		double a1d = Math.toDegrees(baseVectorAngle);
-		// this projection number becomes the base link angle directly
-		jointSpaceVector[0]=a1d;
-		if(debug)println "New base "+a1d
-		//jointSpaceVector[0]=0;// TESTING
+		//return jointSpaceVector
 
-		// Rotate the tip into the xZ plane
-		// apply a transform to the tip here to compute where it
-		// would be on the ZX plane if the base angel was 0
-
-		def firstLink =new TransformNR(links.get(0).DhStep(baseVectorAngle)).inverse()
-		def tipNoRot =new TransformNR(x,y,z,new RotationNR())
-
-		//println "Incomming tip target Tip \tx="+x+" z="+z+" and y="+y+" alph baseLink "+alphaBase
-		//println firstLink
-		//println tipNoRot
-
-		def newTip = firstLink
-				.times(tipNoRot)
-
-		x=newTip.getX()
-		y=newTip.getY()
-		z=newTip.getZ()
-		if(x==0&&y==0) {
-			println "Singularity! try something else"
-			return inverseKinematics6dof(target.copy().translateX(0.01));
-		}
-		if(debug)println "New Tip                             \tx="+x+" y="+y+" and z should be 0 and is="+z
-
-		// Tip y should be 0
-		// this is the angle of the vector from base to tip
-		double tipToBaseAngle = Math.atan2(y,x); // we now have the rest of the links in the XY plane
-		
-		double tipToBaseAngleDegrees = Math.toDegrees(tipToBaseAngle);
-		if(debug)println "Base link to tip angle elevation "+tipToBaseAngleDegrees
-		def transformAngleOfTipToTriangle = new TransformNR(0,0,0,new RotationNR(0,-tipToBaseAngleDegrees,0))
-		def xyTip = new TransformNR(x,y,0,new RotationNR())
-		//Transform the tip into the x Vector
-		def tipXPlane =transformAngleOfTipToTriangle
-				.times(xyTip)
-		//println tipXYPlane
-		double wristVect = tipXPlane.getX();
-		// add together the last two links
-		TransformNR wristCenterToElbow = 	l2Offset.times(l3Offset)//.inverse()
-		// find the angle formed by the two links, includes the elbows theta
-		if(wristCenterToElbow.getX()==0&&wristCenterToElbow.getY()==0) {
-			println "Singularity! try something else"
-			return inverseKinematics6dof(target.copy().translateX(0.01));
-		}
-		double elbowLink2CompositeAngle = Math.atan2(wristCenterToElbow.getY(),wristCenterToElbow.getX());
-		double elbowLink2CompositeAngleDegrees = Math.toDegrees(elbowLink2CompositeAngle)
-		// COmpute teh vector length of the two links combined
-		double elbowLink2CompositeLength = Math.sqrt(
-				Math.pow(wristCenterToElbow.getY(), 2) +
-				Math.pow(wristCenterToElbow.getX(), 2));
-		// assume no D on this link as that would break everything
-		double elbowLink1CompositeLength = links.get(1).getR();
-		if(debug)println "Elbow 2 link data "+elbowLink2CompositeAngleDegrees+" vector "+elbowLink2CompositeLength
-
-		if(wristVect>elbowLink2CompositeLength+elbowLink1CompositeLength)
-			throw new ArithmeticException("Total reach longer than possible "+target);
-		// Use the law of cosines to calculate the elbow and the shoulder tilt
-		double shoulderTiltAngle =-( Math.toDegrees(Math.acos(
-				(Math.pow(elbowLink1CompositeLength,2)+Math.pow(wristVect,2)-Math.pow(elbowLink2CompositeLength,2))/
-				(2*elbowLink1CompositeLength*wristVect)
-				))-tipToBaseAngleDegrees+Math.toDegrees(links.get(1).getTheta()))
-		double elbowTiltAngle =-( Math.toDegrees(Math.acos(
-				(Math.pow(elbowLink2CompositeLength,2)+Math.pow(elbowLink1CompositeLength,2)-Math.pow(wristVect,2))/
-				(2*elbowLink2CompositeLength*elbowLink1CompositeLength)
-				))+elbowLink2CompositeAngleDegrees-180)
-		jointSpaceVector[2]=elbowTiltAngle
-		jointSpaceVector[1]=shoulderTiltAngle
-*/		
-	
 		/**
 		// compute the top of the wrist now that the first 3 links are calculated
 		 * 
@@ -261,10 +186,12 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		ArrayList<TransformNR> chainToLoad =[]
 		chain.forwardKinematicsMatrix(wristLinks,chainToLoad)
 		def	startOfWristSet=chain.kin.inverseOffset(chainToLoad.get(2));
+		def virtualcenter = newCenter.times(new TransformNR(0,0,10,
+			new RotationNR(Math.toDegrees(links.get(5).getAlpha()),0,0)))
 		TransformNR wristMOvedToCenter0 =startOfWristSet
 											.inverse()// move back from base ot wrist to world home
 											.times(virtualcenter)// move forward to target, leaving the angle between the tip and the start of the rotation 
-		if(debug)println 	wristMOvedToCenter0								
+		//if(debug)println 	wristMOvedToCenter0								
 		RotationNR qWrist=wristMOvedToCenter0.getRotation()
 		if(wristMOvedToCenter0.getX()==0&&wristMOvedToCenter0.getY()==0) {
 			println "Singularity! try something else"
@@ -292,10 +219,11 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		chainToLoad.clear()
 		chain.forwardKinematicsMatrix(wristLinks,chainToLoad)
 		def	startOfWristSet2=chain.kin.inverseOffset(chainToLoad.get(3));
+
 		TransformNR wristMOvedToCenter1 =startOfWristSet2
 											.inverse()// move back from base ot wrist to world home
 											.times(virtualcenter)// move forward to target, leaving the angle between the tip and the start of the rotation
-		if(debug)println " Middle link ="	+wristMOvedToCenter1
+		//if(debug)println " Middle link ="	+wristMOvedToCenter1
 		RotationNR qWrist2=wristMOvedToCenter1.getRotation()
 		if(wristMOvedToCenter1.getX()==0&&wristMOvedToCenter1.getY()==0) {
 			println "Singularity! try something else"
@@ -320,7 +248,7 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		TransformNR wristMOvedToCenter2 =startOfWristSet3
 											.inverse()// move back from base ot wrist to world home
 											.times(target.times(tool.inverse()))// move forward to target, leaving the angle between the tip and the start of the rotation
-		if(debug)println "\n\nLastLink "	+wristMOvedToCenter2
+		//if(debug)println "\n\nLastLink "	+wristMOvedToCenter2
 		RotationNR qWrist3=wristMOvedToCenter2.getRotation()
 		jointSpaceVector[5]=(Math.toDegrees(qWrist3.getRotationAzimuth())-Math.toDegrees(links.get(5).getTheta()))
 		
@@ -328,18 +256,19 @@ public class scriptJavaIKModel implements DhInverseSolver {
 //		if(debug)Platform.runLater({TransformFactory.nrToAffine(wristMOvedToCenter1,green.getManipulator())})
 //		if(debug)Platform.runLater({TransformFactory.nrToAffine(wristMOvedToCenter2,red.getManipulator())})
 
-		for(int i=3;i<jointSpaceVector.length;i++) {
-			if(jointSpaceVector[i]>180)
-				jointSpaceVector[i]-=360.0
-			if(jointSpaceVector[i]<-180)
-				jointSpaceVector[i]+=360.0
-		}
+//		for(int i=3;i<jointSpaceVector.length;i++) {
+//			if(jointSpaceVector[i]>180)
+//				jointSpaceVector[i]-=360.0
+//			if(jointSpaceVector[i]<-180)
+//				jointSpaceVector[i]+=360.0
+//		}
 //		for(int i=0;i<jointSpaceVector.length;i++) {
 //			if(Math.abs(jointSpaceVector[i])<0.001) {
 //				jointSpaceVector[i]=0;
 //			}
 //		}
-		if(debug)println "Euler Decomposition proccesed \n"+jointSpaceVector[3]+" \n"+jointSpaceVector[4]+" \n"+jointSpaceVector[5]
+		
+		//if(debug)println "Euler Decomposition proccesed \n"+jointSpaceVector[3]+" \n"+jointSpaceVector[4]+" \n"+jointSpaceVector[5]
 		//println "Law of cosines results "+shoulderTiltAngle+" and "+elbowTiltAngle
 		return jointSpaceVector;
 	}

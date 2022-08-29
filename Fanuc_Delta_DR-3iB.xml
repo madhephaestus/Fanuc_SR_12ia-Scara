@@ -8,11 +8,6 @@
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
 		<file>walking.groovy</file>
 	</driveEngine>
-	<parallelCadEngine>
-		<parallelGroup>delta</parallelGroup>
-		<git>https://gist.github.com/33f2c10ab3adc5bd91f0a58ea7f24d14.git</git>
-		<file>parallelTool.groovy</file>
-	</parallelCadEngine>
 
 <name>Fanuc_Delta_DR</name>
 <appendage>
@@ -90,8 +85,8 @@
 	<scale>1.0</scale>
 	<upperLimit>122.49998088079637</upperLimit>
 	<lowerLimit>-122.49998088079637</lowerLimit>
-	<upperVelocity>310.0</upperVelocity>
-	<lowerVelocity>-310.0</lowerVelocity>
+	<upperVelocity>2000.0</upperVelocity>
+	<lowerVelocity>-2000.0</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>122.49998088079637</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-122.49998088079637</deviceTheoreticalMin>
@@ -146,8 +141,8 @@
 	<scale>1.0</scale>
 	<upperLimit>215.00000620010186</upperLimit>
 	<lowerLimit>-215.00000620010186</lowerLimit>
-	<upperVelocity>430.0</upperVelocity>
-	<lowerVelocity>-430.0</lowerVelocity>
+	<upperVelocity>2000.0</upperVelocity>
+	<lowerVelocity>-2000.0</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>215.00000620010186</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-215.00000620010186</deviceTheoreticalMin>
@@ -202,8 +197,8 @@
 	<scale>1.0</scale>
 	<upperLimit>190.00002413359965</upperLimit>
 	<lowerLimit>-190.00002413359965</lowerLimit>
-	<upperVelocity>550.0</upperVelocity>
-	<lowerVelocity>-550.0</lowerVelocity>
+	<upperVelocity>2000.0</upperVelocity>
+	<lowerVelocity>-2000.0</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>190.00002413359965</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-190.00002413359965</deviceTheoreticalMin>
@@ -258,8 +253,8 @@
 	<scale>1.0</scale>
 	<upperLimit>125.0000249240702</upperLimit>
 	<lowerLimit>-125.0000249240702</lowerLimit>
-	<upperVelocity>545.0</upperVelocity>
-	<lowerVelocity>-545.0</lowerVelocity>
+	<upperVelocity>2000.0</upperVelocity>
+	<lowerVelocity>-2000.0</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>125.0000249240702</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-125.0000249240702</deviceTheoreticalMin>
@@ -314,8 +309,8 @@
 	<scale>1.0</scale>
 	<upperLimit>359.9999823999062</upperLimit>
 	<lowerLimit>-359.9999823999062</lowerLimit>
-	<upperVelocity>1000.0</upperVelocity>
-	<lowerVelocity>-1000.0</lowerVelocity>
+	<upperVelocity>2000.0</upperVelocity>
+	<lowerVelocity>-2000.0</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>359.9999823999062</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-359.9999823999062</deviceTheoreticalMin>
@@ -916,7 +911,7 @@
 	<roty>-0.0</roty>
 	<rotz>-0.0</rotz>
 </baseToZframe>
-	<mass>0.5</mass>
+	<mass>0.001</mass>
 	<centerOfMassFromCentroid>	<x>0.0</x>
 	<y>0.0</y>
 	<z>0.0</z>
