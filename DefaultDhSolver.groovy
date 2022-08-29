@@ -22,7 +22,7 @@ import org.apache.commons.math3.geometry.euclidean.threed.RotationConvention
 import org.apache.commons.math3.geometry.euclidean.threed.RotationOrder
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 
-public class scriptJavaIKModel implements DhInverseSolver {
+public class deltaIK implements DhInverseSolver {
 	boolean debug = false;
 	CSG blue =null;
 	CSG green =null;
@@ -431,4 +431,4 @@ public class scriptJavaIKModel implements DhInverseSolver {
 
 if(args==null)
 	args=[0]
-return new scriptJavaIKModel (args[0])
+return new deltaIK (args[0])
