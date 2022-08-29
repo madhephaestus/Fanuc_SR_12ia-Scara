@@ -8,11 +8,18 @@
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
 		<file>walking.groovy</file>
 	</driveEngine>
+	<parallelCadEngine>
+		<parallelGroup>delta</parallelGroup>
+		<git>https://gist.github.com/33f2c10ab3adc5bd91f0a58ea7f24d14.git</git>
+		<file>parallelTool.groovy</file>
+	</parallelCadEngine>
 
 <name>Fanuc_Delta_DR</name>
 <appendage>
 
 <name>Standard6dofArm1</name>
+
+<parallelGroup>delta</parallelGroup>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
 		<file>cadGenHephaestusArm.groovy</file>
@@ -894,6 +901,22 @@
 <appendage>
 
 <name>Standard6dofArm2</name>
+
+<parallelGroup>delta</parallelGroup>
+
+<parallelGroupTipOffset>
+	<x>0.0</x>
+	<y>0.0</y>
+	<z>0.0</z>
+	<rotw>1.0</rotw>
+	<rotx>-0.0</rotx>
+	<roty>-0.0</roty>
+	<rotz>-0.0</rotz>
+	<relativeTo>Standard6dofArm1</relativeTo>
+
+	<relativeToLink>6</relativeToLink>
+
+</parallelGroupTipOffset>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
 		<file>cadGenHephaestusArm.groovy</file>
@@ -1306,19 +1329,35 @@
 </ZframeToRAS>
 
 <baseToZframe>
-	<x>0.0</x>
-	<y>100.0</y>
+	<x>-100.0</x>
+	<y>-100.0</y>
 	<z>0.0</z>
-	<rotw>0.7071684852014806</rotw>
-	<rotx>-1.1243977622460255E-13</rotx>
-	<roty>-0.7070450717866884</roty>
-	<rotz>-1.1245940238041078E-13</rotz>
+	<rotw>0.3535842426007993</rotw>
+	<rotx>0.6123189937877621</rotx>
+	<roty>-0.3535225358932853</roty>
+	<rotz>0.6124258729403441</rotz>
 </baseToZframe>
 
 </appendage>
 <appendage>
 
 <name>Standard6dofArm3</name>
+
+<parallelGroup>delta</parallelGroup>
+
+<parallelGroupTipOffset>
+	<x>0.0</x>
+	<y>0.0</y>
+	<z>0.0</z>
+	<rotw>1.0</rotw>
+	<rotx>-0.0</rotx>
+	<roty>-0.0</roty>
+	<rotz>-0.0</rotz>
+	<relativeTo>Standard6dofArm1</relativeTo>
+
+	<relativeToLink>6</relativeToLink>
+
+</parallelGroupTipOffset>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
 		<file>cadGenHephaestusArm.groovy</file>
@@ -1731,13 +1770,13 @@
 </ZframeToRAS>
 
 <baseToZframe>
-	<x>0.0</x>
-	<y>100.0</y>
+	<x>100.0</x>
+	<y>-100.0</y>
 	<z>0.0</z>
-	<rotw>0.7071684852014806</rotw>
-	<rotx>-1.1243977622460255E-13</rotx>
-	<roty>-0.7070450717866884</roty>
-	<rotz>-1.1245940238041078E-13</rotz>
+	<rotw>0.3535842426006347</rotw>
+	<rotx>-0.6123189937875974</rotx>
+	<roty>-0.35352253589267074</roty>
+	<rotz>-0.6124258729409586</rotz>
 </baseToZframe>
 
 </appendage>
