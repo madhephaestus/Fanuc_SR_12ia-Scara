@@ -150,7 +150,11 @@ public class deltaIK implements DhInverseSolver {
 		 * theta1 = acos(l1^2+x^2-l3^2/2*l1*x)
 		 * 
 		 */
-		double theta2 = Math.asin(elZ/L2)
+		double asinVal = elZ/L2
+		if(asinVal>1 || asinVal<-1)
+			throw new RuntimeException("Target outside workspace, passive links too short to reach "+L2)
+		double theta2 = Math.asin(asinVal)
+		
 		double L3 = L2*Math.cos(theta2)
 		double theta1 = Math.acos(
 			(
@@ -161,7 +165,21 @@ public class deltaIK implements DhInverseSolver {
 			(2 * L1 *elX)	
 		)
 		jointSpaceVector[0]=-(90-(Math.toDegrees(theta1)+baseVectorAngle))
-		TransformNR reorent =new TransformNR(0,0,0,new RotationNR(0, -jointSpaceVector[0], 0))
+		TransformNR reorent;
+		try {
+			reorent =new TransformNR(0,0,0,new RotationNR(0, -jointSpaceVector[0], 0))
+		}catch (Throwable t){
+			//t.printStackTrace()
+			throw new RuntimeException( "error calculating base angle: \nL1 "+L1+
+				" \nl2 "+L2+
+				" \nz "+elZ+
+				" \nx "+elX+
+				" \nl3 "+L3+
+				" \ntheta2 "+Math.toDegrees(theta2)+
+				" \nasinVal "+asinVal
+				
+				)
+		}
 		TransformNR sphericalElbowTartget = reorent.times(newCenter)
 		//println newCenter 
 		//println 	sphericalElbowTartget
