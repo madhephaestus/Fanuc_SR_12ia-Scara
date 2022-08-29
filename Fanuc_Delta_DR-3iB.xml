@@ -882,12 +882,12 @@
 
 <baseToZframe>
 	<x>0.0</x>
-	<y>0.0</y>
+	<y>100.0</y>
 	<z>0.0</z>
-	<rotw>1.0</rotw>
-	<rotx>-0.0</rotx>
-	<roty>-0.0</roty>
-	<rotz>-1.590277348802349E-13</rotz>
+	<rotw>0.7071684852014806</rotw>
+	<rotx>-1.1243977622460255E-13</rotx>
+	<roty>-0.7070450717866884</roty>
+	<rotz>-1.1245940238041078E-13</rotz>
 </baseToZframe>
 
 </appendage>
