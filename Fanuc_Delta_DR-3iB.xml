@@ -905,8 +905,8 @@
 <parallelGroup>delta</parallelGroup>
 
 <parallelGroupTipOffset>
-	<x>0.0</x>
-	<y>0.0</y>
+	<x>-100.0</x>
+	<y>100.0</y>
 	<z>0.0</z>
 	<rotw>1.0</rotw>
 	<rotx>-0.0</rotx>
@@ -1290,7 +1290,7 @@
 <parallelGroup>delta</parallelGroup>
 
 <parallelGroupTipOffset>
-	<x>100.0</x>
+	<x>-100.0</x>
 	<y>-100.0</y>
 	<z>0.0</z>
 	<rotw>1.0</rotw>
