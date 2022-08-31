@@ -17,7 +17,7 @@
 <name>Fanuc_Delta_DR</name>
 <appendage>
 
-<name>Standard6dofArm1</name>
+<name>DeltaChain1</name>
 
 <parallelGroup>delta</parallelGroup>
 	<cadEngine>
@@ -900,7 +900,7 @@
 </appendage>
 <appendage>
 
-<name>Standard6dofArm2</name>
+<name>DeltaChain2</name>
 
 <parallelGroup>delta</parallelGroup>
 
@@ -912,7 +912,7 @@
 	<rotx>-0.0</rotx>
 	<roty>-0.0</roty>
 	<rotz>-0.0</rotz>
-	<relativeTo>Standard6dofArm1</relativeTo>
+	<relativeTo>DeltaChain1</relativeTo>
 
 	<relativeToLink>6</relativeToLink>
 
@@ -1285,7 +1285,7 @@
 </appendage>
 <appendage>
 
-<name>Standard6dofArm3</name>
+<name>DeltaChain3</name>
 
 <parallelGroup>delta</parallelGroup>
 
@@ -1297,7 +1297,7 @@
 	<rotx>-0.0</rotx>
 	<roty>-0.0</roty>
 	<rotz>-0.0</rotz>
-	<relativeTo>Standard6dofArm1</relativeTo>
+	<relativeTo>DeltaChain1</relativeTo>
 
 	<relativeToLink>6</relativeToLink>
 
@@ -1670,7 +1670,7 @@
 </appendage>
 <appendage>
 
-<name>Standard6dofArm1a</name>
+<name>DeltaChain1a</name>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
 		<file>cadGenHephaestusArm.groovy</file>
@@ -2039,7 +2039,7 @@
 </appendage>
 <appendage>
 
-<name>Standard6dofArm2a</name>
+<name>DeltaChain2a</name>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
 		<file>cadGenHephaestusArm.groovy</file>
@@ -2408,7 +2408,7 @@
 </appendage>
 <appendage>
 
-<name>Standard6dofArm3a</name>
+<name>DeltaChain3a</name>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
 		<file>cadGenHephaestusArm.groovy</file>
