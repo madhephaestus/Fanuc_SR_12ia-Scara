@@ -1,6 +1,10 @@
+
 import com.neuronrobotics.bowlerstudio.scripting.ScriptingEngine
 import com.neuronrobotics.sdk.addons.kinematics.DHParameterKinematics
 import com.neuronrobotics.sdk.addons.kinematics.MobileBase
+import com.neuronrobotics.sdk.addons.kinematics.math.RotationNR
+import com.neuronrobotics.sdk.addons.kinematics.math.TransformNR
+import com.neuronrobotics.sdk.addons.kinematics.parallel.ParallelGroup
 import com.neuronrobotics.sdk.common.DeviceManager
 
 MobileBase base=DeviceManager.getSpecificDevice( "Fanuc_Delta_DR",{
@@ -28,5 +32,21 @@ for(DHParameterKinematics k:base.getAllDHChains()) {
 	if(name.contains("3")) {
 		rot=240
 	}
+	TransformNR limbRoot = new TransformNR(0,0,0,new RotationNR(0, rot, 0))
+		.times(new TransformNR(baseCircleDiam,yOffset,0,new RotationNR(0, 0,0)))
+	limbRoot.setRotation(new RotationNR(0,rot-90,-89.9999))
 	
+	k.setDH_D(1, powerLinkLen)
+	k.setDH_D(3, passiveLinkLen)
+	ParallelGroup baseGetParallelGroup = base.getParallelGroup(k)
+	if(baseGetParallelGroup!=null && !name.endsWith("1")) {
+		double centerx = passiveSepDist/2
+		double centery =eoaPlatRad
+		TransformNR local = new TransformNR(-centerx -(centerx * Math.sin(Math.toRadians(rot))),
+		-centery,
+		0,new RotationNR() )
+		baseGetParallelGroup.setTipOffset(k, local)
+	}
+	
+	k.setRobotToFiducialTransform(limbRoot)
 }
