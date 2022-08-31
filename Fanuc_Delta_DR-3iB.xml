@@ -620,13 +620,13 @@
 </ZframeToRAS>
 
 <baseToZframe>
-	<x>25.0</x>
-	<y>0.0</y>
-	<z>68.5</z>
-	<rotw>0.7071684852049716</rotw>
-	<rotx>1.1321438114461768E-12</rotx>
-	<roty>-0.7070450717831968</roty>
-	<rotz>1.1321228522952867E-12</rotz>
+	<x>100.0</x>
+	<y>83.4</y>
+	<z>0.0</z>
+	<rotw>0.7132504491541816</rotw>
+	<rotx>-0.0</rotx>
+	<roty>-0.7009092642998509</roty>
+	<rotz>-0.0</rotz>
 </baseToZframe>
 
 </appendage>
@@ -821,13 +821,13 @@
 </ZframeToRAS>
 
 <baseToZframe>
-	<x>-25.0</x>
-	<y>0.0</y>
-	<z>68.5</z>
-	<rotw>0.5000654493704454</rotw>
-	<rotx>-0.4999345496776254</rotx>
-	<roty>-0.4999781791003216</roty>
-	<rotz>-0.5000218123323134</rotz>
+	<x>50.0</x>
+	<y>83.4</y>
+	<z>0.0</z>
+	<rotw>0.5043882396976382</rotw>
+	<rotx>-0.49557444109284304</rotx>
+	<roty>-0.4956609426986097</roty>
+	<rotz>-0.504300215024106</rotz>
 </baseToZframe>
 
 </appendage>
@@ -905,8 +905,8 @@
 <parallelGroup>delta</parallelGroup>
 
 <parallelGroupTipOffset>
-	<x>-83.4</x>
-	<y>-75.0</y>
+	<x>-190.0519052838329</x>
+	<y>-40.273481324377784</y>
 	<z>0.0</z>
 	<rotw>1.0</rotw>
 	<rotx>-0.0</rotx>
@@ -1290,8 +1290,8 @@
 <parallelGroup>delta</parallelGroup>
 
 <parallelGroupTipOffset>
-	<x>-83.4</x>
-	<y>-75.0</y>
+	<x>-60.14809471616717</x>
+	<y>-184.7265186756222</y>
 	<z>0.0</z>
 	<rotw>1.0</rotw>
 	<rotx>-0.0</rotx>

@@ -32,7 +32,8 @@ for(DHParameterKinematics k:base.getAllDHChains()) {
 	if(name.contains("3")) {
 		rot=240
 	}
-	TransformNR limbRoot = new TransformNR(0,0,0,new RotationNR(0, rot, 0))
+	def rotation = new TransformNR(0,0,0,new RotationNR(0, rot, 0))
+	TransformNR limbRoot = rotation
 		.times(new TransformNR(baseCircleDiam,yOffset,0,new RotationNR(0, 0,0)))
 	limbRoot.setRotation(new RotationNR(0,rot-90,-89.9999))
 	
@@ -42,11 +43,36 @@ for(DHParameterKinematics k:base.getAllDHChains()) {
 	if(baseGetParallelGroup!=null && !name.endsWith("1")) {
 		double centerx = passiveSepDist/2
 		double centery =eoaPlatRad
-		TransformNR local = new TransformNR(-centerx -(centerx * Math.sin(Math.toRadians(rot))),
-		-centery,
+		TransformNR local = new TransformNR(-centery,
+		-centerx ,
 		0,new RotationNR() )
+		tipLoc = rotation
+		.times(new TransformNR(centerx,centery,0,new RotationNR(0, 0,0)))
+		tipLoc.setRotation(new RotationNR())
+		local=tipLoc
+		.times(new TransformNR(-centerx,-centery,0,new RotationNR()))
+		println name
+		println local
 		baseGetParallelGroup.setTipOffset(k, local)
+	}
+	for(int i=0;i<k.getNumberOfLinks();i++) {
+		MobileBase kGetSlaveMobileBase = k.getSlaveMobileBase(i)
+		if(kGetSlaveMobileBase!=null) {
+			println "Found hand "+kGetSlaveMobileBase.getScriptingName()
+			for(DHParameterKinematics n:kGetSlaveMobileBase.getAllDHChains()) {
+				String namef =n.getScriptingName()
+				double xoffset=-25
+				double az = -89.99
+				if(namef.endsWith("0")) {
+					xoffset=25
+					az=0
+				}
+				TransformNR finLoc =new TransformNR(xoffset+eoaPlatRad,passiveSepDist/2,0,new RotationNR(0, az,-89))
+				n.setRobotToFiducialTransform(finLoc)
+			}
+		}
 	}
 	
 	k.setRobotToFiducialTransform(limbRoot)
 }
+
