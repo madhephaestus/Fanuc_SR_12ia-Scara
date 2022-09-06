@@ -15,10 +15,11 @@ double[] links = [0,-35,30,0,4,0,0]
 
 //mainLimb.setDesiredJointSpaceVector(links,0)
 
-TransformNR Tip= mainLimb.forwardOffset(mainLimb.forwardKinematics(links))
+TransformNR Tip= mainLimb.calcHome().translateY(-1)
 
 double[] linksComuted = mainLimb.inverseKinematics(mainLimb.inverseOffset(Tip))
-mainLimb.setDesiredJointSpaceVector(linksComuted,0)
+//mainLimb.setDesiredJointSpaceVector(linksComuted,0)
+mainLimb.setDesiredTaskSpaceTransform(Tip, 0)
 
 println links.collect{df.format(it)+"\t"}
 
