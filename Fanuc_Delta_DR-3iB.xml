@@ -26,7 +26,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
-		<file>DefaultDhSolver.groovy</file>
+		<file>delta-dh-ik.groovy</file>
 	</kinematics>
 <link>
 	<name>powered</name>
@@ -438,7 +438,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/carl-the-hexapod.git</git>
-		<file>DefaultDhSolver.groovy</file>
+		<file>delta-dh-ik.groovy</file>
 	</kinematics>
 <link>
 	<name>basePan</name>
@@ -639,7 +639,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/carl-the-hexapod.git</git>
-		<file>DefaultDhSolver.groovy</file>
+		<file>delta-dh-ik.groovy</file>
 	</kinematics>
 <link>
 	<name>basePan</name>
@@ -923,7 +923,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
-		<file>DefaultDhSolver.groovy</file>
+		<file>delta-dh-ik.groovy</file>
 	</kinematics>
 <link>
 	<name>powered</name>
@@ -1308,7 +1308,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
-		<file>DefaultDhSolver.groovy</file>
+		<file>delta-dh-ik.groovy</file>
 	</kinematics>
 <link>
 	<name>powered</name>
@@ -1677,7 +1677,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
-		<file>DefaultDhSolver.groovy</file>
+		<file>delta-dh-ik.groovy</file>
 	</kinematics>
 <link>
 	<name>powered</name>
@@ -2046,7 +2046,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
-		<file>DefaultDhSolver.groovy</file>
+		<file>delta-dh-ik.groovy</file>
 	</kinematics>
 <link>
 	<name>powered</name>
@@ -2415,7 +2415,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
-		<file>DefaultDhSolver.groovy</file>
+		<file>delta-dh-ik.groovy</file>
 	</kinematics>
 <link>
 	<name>powered</name>
