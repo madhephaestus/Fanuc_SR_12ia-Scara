@@ -1,9 +1,12 @@
 
 import com.neuronrobotics.bowlerstudio.physics.TransformFactory
+import com.neuronrobotics.sdk.addons.kinematics.AbstractKinematicsNR
 import com.neuronrobotics.sdk.addons.kinematics.DHChain;
 import com.neuronrobotics.sdk.addons.kinematics.DhInverseSolver;
 import com.neuronrobotics.sdk.addons.kinematics.math.RotationNR;
 import com.neuronrobotics.sdk.addons.kinematics.math.TransformNR;
+
+import java.text.DecimalFormat
 import java.util.ArrayList;
 
 import com.neuronrobotics.sdk.addons.kinematics.DHLink;
@@ -37,7 +40,10 @@ public class deltaIK implements DhInverseSolver {
 	
 	
 	public double[] inverseKinematics6dof(TransformNR target, double[] jointSpaceVector, DHChain chain) {
-
+		double[] current = new double[jointSpaceVector.length]
+		for(int i=0;i<current.length;i++) {
+			current[i]=jointSpaceVector[i];
+		}
 		ArrayList<DHLink> links = chain.getLinks();
 		int linkNum = jointSpaceVector.length;
 		TransformNR l0Offset = linkOffset(links.get(0));
@@ -48,7 +54,8 @@ public class deltaIK implements DhInverseSolver {
 		double z = target.getZ();
 		double y = target.getY();
 		double x = target.getX();
-		TransformNR targetNoRot =new TransformNR(x,y,z,new RotationNR());
+		// delta kinematics has no rotation at this layer
+		//target =new TransformNR(x,y,z,new RotationNR(0,-180,0));
 		
 		RotationNR q = target.getRotation();
 		TransformNR newCenter =target.copy();
@@ -227,8 +234,16 @@ public class deltaIK implements DhInverseSolver {
 		RotationNR qWrist3=wristMOvedToCenter2.getRotation();
 		jointSpaceVector[5]=(Math.toDegrees(qWrist3.getRotationAzimuth())-Math.toDegrees(links.get(5).getTheta()));
 		
+		double[] nrm = WristNormalizer.normalize([jointSpaceVector[3],jointSpaceVector[4],jointSpaceVector[5]]as double[],
+			[current[3],current[4],current[5]]as double[],
+			chain);
+		jointSpaceVector[3]=nrm[0]
+		jointSpaceVector[4]=nrm[1]
+		jointSpaceVector[5]=nrm[2]
+		
 		return jointSpaceVector;
 	}
+	
 }
 
 
