@@ -54,35 +54,25 @@ return new ICadGenerator(){
 				ArrayList<CSG> parts =  new ArrayList<>();
 				DHLink dh = arg0.getDhLink(arg1)
 				Affine manipulator = arg0.getLinkObjectManipulator(arg1)
-				if(arg1<6) {
-
-					def name = "mesh/link_"+(arg1+1)+".stl"
-					println "Loading "+name
-					CSG link  = moveDHValues(Vitamins.get(ScriptingEngine.fileFromGit(
-							"https://github.com/madhephaestus/Fanuc_LR_Mate_200id_7L.git",
-							name)).scale(1000),dh)
-					if(arg1==0) {
-						link=link
+				if(arg1==0) {
+					if(!arg0.getScriptingName().endsWith("a")) {
+						def name = "stl/link_"+(arg1+1)+".STL"
+						println "Loading "+name
+						def linkcenter=95
+						def ballcenter = 10
+						CSG link  = Vitamins.get(ScriptingEngine.fileFromGit(
+								"https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git",
+								name)).roty(194).toXMin().toYMin().toZMax()
+								.movez(linkcenter)
+								.movex(-linkcenter+2)
+								.roty(90)
+								.rotz(180)
+								.toYMin()
+								.movey(-ballcenter)
+						link.setManipulator(manipulator)
+						link.setColor(Color.SILVER)
+						parts.add(link)
 					}
-					if(arg1==1) {
-						link=link.roty(90).movez(440)
-					}
-					if(arg1==2) {
-						link=reverseDHValues(link,dh)
-								.movex(-35)
-					}
-					if(arg1==3) {
-						link=moveDHValues(reverseDHValues(link,dh).roty(90),dh).movey(-5)
-					}
-					if(arg1==4) {
-						link=moveDHValues(reverseDHValues(link,dh).roty(90),dh)	.rotx(90)
-					}
-					if(arg1==5) {
-						link=reverseDHValues(link,dh).roty(90).movez(-160)
-					}
-					link.setManipulator(manipulator)
-					link.setColor(Color.web("#f3da0b"))
-					parts.add(link)
 				}else if(arg1==6) {
 					def calTipConeHeight = 22.5
 					def calSpikeRad=15.8/2
@@ -93,34 +83,34 @@ return new ICadGenerator(){
 							(int)30 //resolution
 							).toCSG()//convert to CSG to display                    			         ).toCSG()//convert to CSG to display
 					CSG calShaft =new Cylinder(calSpikeRad,calSpikeShaftlen).toCSG() // a one line Cylinder
-									.movez(calTipConeHeight)		
-					def link = tip.union(calShaft)	
+							.movez(calTipConeHeight)
+					def link = tip.union(calShaft)
 					link.setColor(Color.web("#C0C0C0"))
-					double fingerTop = 160-68.5
+					double fingerTop = 0
 					CSG finger=Vitamins.get(ScriptingEngine.fileFromGit(
-						"https://github.com/madhephaestus/Fanuc_LR_Mate_200id_7L.git",
-						"mesh/4acc-5k-kin-centered.stl")).rotz(-90).movez(fingerTop)
-						.setColor(Color.BLUE)
+							"https://github.com/madhephaestus/Fanuc_LR_Mate_200id_7L.git",
+							"mesh/4acc-5k-kin-centered.stl")).rotz(-90).movez(fingerTop)
+							.setColor(Color.BLUE)
 					double seperation = 70
-					
+
 					CSG left= finger.movex(seperation/2)
 					CSG right= finger.rotz(180).movex(-seperation/2)
 					CSG hand = new Cube(finger.getTotalX()+seperation,finger.getTotalY(),25 ).toCSG()
-								.toZMin()
-								.movez(fingerTop)
-								.setColor(Color.WHITE)
+							.toZMin()
+							.movez(fingerTop)
+							.setColor(Color.WHITE)
 					CSG hose =new Cylinder(4, 60).toCSG()
-								.rotx(-70)
-								.movez(fingerTop+25)
-								.setColor(Color.LIGHTBLUE)
-					parts.addAll([hand,hose])
+							.rotx(-70)
+							.movez(fingerTop+25)
+							.setColor(Color.LIGHTBLUE)
+					parts.addAll([hand, hose])
 					for(CSG c:parts) {
 						c.setManipulator(manipulator)
 					}
 				}
 				for(int i=0;i<parts.size();i++) {
 					parts.get(i).setName("Fanuc link "+arg1+" part "+i)
-				}	
+				}
 				return parts;
 			}
 
@@ -128,10 +118,15 @@ return new ICadGenerator(){
 			public ArrayList<CSG> generateBody(MobileBase arg0) {
 				ArrayList<CSG> parts =  new ArrayList<>();
 				CSG base  = Vitamins.get(ScriptingEngine.fileFromGit(
-						"https://github.com/madhephaestus/Fanuc_LR_Mate_200id_7L.git",
-						"mesh/base_link.stl")).scale(1000)
+						"https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git",
+						"stl/BASE.STL"))
+						.roty(180)
 						.toZMax()
-						.movez(-160)
+						.movez(100)
+				base=base.movey(-base.getCenterY())
+				base=base.movex(-base.getCenterX())
+					.movex(-85)
+					.movey(20)
 				Affine manipulator = arg0.getRootListener()
 				base.setManipulator(manipulator)
 

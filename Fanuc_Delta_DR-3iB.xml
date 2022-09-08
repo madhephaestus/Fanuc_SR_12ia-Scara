@@ -92,8 +92,8 @@
 	<scale>1.0</scale>
 	<upperLimit>122.49998088079637</upperLimit>
 	<lowerLimit>-122.49998088079637</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>122.49998088079637</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-122.49998088079637</deviceTheoreticalMin>
@@ -148,8 +148,8 @@
 	<scale>1.0</scale>
 	<upperLimit>215.00000620010186</upperLimit>
 	<lowerLimit>-215.00000620010186</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>215.00000620010186</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-215.00000620010186</deviceTheoreticalMin>
@@ -204,9 +204,8 @@
 	<scale>1.0</scale>
 	<upperLimit>190.00002413359965</upperLimit>
 	<lowerLimit>-190.00002413359965</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>190.00002413359965</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-190.00002413359965</deviceTheoreticalMin>
@@ -261,9 +260,8 @@
 	<scale>1.0</scale>
 	<upperLimit>125.0000249240702</upperLimit>
 	<lowerLimit>-125.0000249240702</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>125.0000249240702</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-125.0000249240702</deviceTheoreticalMin>
@@ -318,9 +316,8 @@
 	<scale>1.0</scale>
 	<upperLimit>359.9999823999062</upperLimit>
 	<lowerLimit>-359.9999823999062</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>359.9999823999062</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-359.9999823999062</deviceTheoreticalMin>
@@ -891,7 +888,7 @@
 </ZframeToRAS>
 
 <baseToZframe>
-	<x>280.0</x>
+	<x>140.0</x>
 	<y>83.4</y>
 	<z>0.0</z>
 	<rotw>0.5000004363321227</rotw>
@@ -992,9 +989,8 @@
 	<scale>1.0</scale>
 	<upperLimit>122.49998088079637</upperLimit>
 	<lowerLimit>-122.49998088079637</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>122.49998088079637</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-122.49998088079637</deviceTheoreticalMin>
@@ -1049,9 +1045,8 @@
 	<scale>1.0</scale>
 	<upperLimit>215.00000620010186</upperLimit>
 	<lowerLimit>-215.00000620010186</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>215.00000620010186</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-215.00000620010186</deviceTheoreticalMin>
@@ -1106,9 +1101,8 @@
 	<scale>1.0</scale>
 	<upperLimit>190.00002413359965</upperLimit>
 	<lowerLimit>-190.00002413359965</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>190.00002413359965</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-190.00002413359965</deviceTheoreticalMin>
@@ -1163,9 +1157,8 @@
 	<scale>1.0</scale>
 	<upperLimit>125.0000249240702</upperLimit>
 	<lowerLimit>-125.0000249240702</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>125.0000249240702</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-125.0000249240702</deviceTheoreticalMin>
@@ -1220,9 +1213,8 @@
 	<scale>1.0</scale>
 	<upperLimit>359.9999823999062</upperLimit>
 	<lowerLimit>-359.9999823999062</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>359.9999823999062</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-359.9999823999062</deviceTheoreticalMin>
@@ -1281,8 +1273,8 @@
 </ZframeToRAS>
 
 <baseToZframe>
-	<x>-212.22651867562215</x>
-	<y>200.78711305964288</y>
+	<x>-142.22651867562217</x>
+	<y>79.54355652982144</y>
 	<z>0.0</z>
 	<rotw>0.6830132979329833</rotw>
 	<rotx>0.18301254218343854</rotx>
@@ -1382,9 +1374,8 @@
 	<scale>1.0</scale>
 	<upperLimit>122.49998088079637</upperLimit>
 	<lowerLimit>-122.49998088079637</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>122.49998088079637</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-122.49998088079637</deviceTheoreticalMin>
@@ -1439,9 +1430,8 @@
 	<scale>1.0</scale>
 	<upperLimit>215.00000620010186</upperLimit>
 	<lowerLimit>-215.00000620010186</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>215.00000620010186</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-215.00000620010186</deviceTheoreticalMin>
@@ -1496,9 +1486,8 @@
 	<scale>1.0</scale>
 	<upperLimit>190.00002413359965</upperLimit>
 	<lowerLimit>-190.00002413359965</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>190.00002413359965</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-190.00002413359965</deviceTheoreticalMin>
@@ -1553,9 +1542,8 @@
 	<scale>1.0</scale>
 	<upperLimit>125.0000249240702</upperLimit>
 	<lowerLimit>-125.0000249240702</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>125.0000249240702</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-125.0000249240702</deviceTheoreticalMin>
@@ -1610,9 +1598,8 @@
 	<scale>1.0</scale>
 	<upperLimit>359.9999823999062</upperLimit>
 	<lowerLimit>-359.9999823999062</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>359.9999823999062</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-359.9999823999062</deviceTheoreticalMin>
@@ -1671,8 +1658,8 @@
 </ZframeToRAS>
 
 <baseToZframe>
-	<x>-67.77348132437795</x>
-	<y>-284.1871130596428</y>
+	<x>2.2265186756221027</x>
+	<y>-162.94355652982142</y>
 	<z>0.0</z>
 	<rotw>0.18301286160086067</rotw>
 	<rotx>0.6830121058509352</rotx>
@@ -1756,9 +1743,8 @@
 	<scale>1.0</scale>
 	<upperLimit>122.49998088079637</upperLimit>
 	<lowerLimit>-122.49998088079637</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>122.49998088079637</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-122.49998088079637</deviceTheoreticalMin>
@@ -1813,9 +1799,8 @@
 	<scale>1.0</scale>
 	<upperLimit>215.00000620010186</upperLimit>
 	<lowerLimit>-215.00000620010186</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>215.00000620010186</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-215.00000620010186</deviceTheoreticalMin>
@@ -1870,9 +1855,8 @@
 	<scale>1.0</scale>
 	<upperLimit>190.00002413359965</upperLimit>
 	<lowerLimit>-190.00002413359965</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>190.00002413359965</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-190.00002413359965</deviceTheoreticalMin>
@@ -1927,9 +1911,8 @@
 	<scale>1.0</scale>
 	<upperLimit>125.0000249240702</upperLimit>
 	<lowerLimit>-125.0000249240702</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>125.0000249240702</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-125.0000249240702</deviceTheoreticalMin>
@@ -1984,9 +1967,8 @@
 	<scale>1.0</scale>
 	<upperLimit>359.9999823999062</upperLimit>
 	<lowerLimit>-359.9999823999062</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>359.9999823999062</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-359.9999823999062</deviceTheoreticalMin>
@@ -2045,7 +2027,7 @@
 </ZframeToRAS>
 
 <baseToZframe>
-	<x>280.0</x>
+	<x>140.0</x>
 	<y>-83.4</y>
 	<z>0.0</z>
 	<rotw>0.5000004363321227</rotw>
@@ -2130,9 +2112,8 @@
 	<scale>1.0</scale>
 	<upperLimit>122.49998088079637</upperLimit>
 	<lowerLimit>-122.49998088079637</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>122.49998088079637</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-122.49998088079637</deviceTheoreticalMin>
@@ -2187,9 +2168,8 @@
 	<scale>1.0</scale>
 	<upperLimit>215.00000620010186</upperLimit>
 	<lowerLimit>-215.00000620010186</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>215.00000620010186</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-215.00000620010186</deviceTheoreticalMin>
@@ -2244,9 +2224,8 @@
 	<scale>1.0</scale>
 	<upperLimit>190.00002413359965</upperLimit>
 	<lowerLimit>-190.00002413359965</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>190.00002413359965</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-190.00002413359965</deviceTheoreticalMin>
@@ -2301,9 +2280,8 @@
 	<scale>1.0</scale>
 	<upperLimit>125.0000249240702</upperLimit>
 	<lowerLimit>-125.0000249240702</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>125.0000249240702</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-125.0000249240702</deviceTheoreticalMin>
@@ -2358,9 +2336,8 @@
 	<scale>1.0</scale>
 	<upperLimit>359.9999823999062</upperLimit>
 	<lowerLimit>-359.9999823999062</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>359.9999823999062</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-359.9999823999062</deviceTheoreticalMin>
@@ -2419,8 +2396,8 @@
 </ZframeToRAS>
 
 <baseToZframe>
-	<x>-67.77348132437774</x>
-	<y>284.18711305964285</y>
+	<x>2.2265186756222306</x>
+	<y>162.94355652982142</y>
 	<z>0.0</z>
 	<rotw>0.6830132979329833</rotw>
 	<rotx>0.18301254218343854</rotx>
@@ -2504,9 +2481,8 @@
 	<scale>1.0</scale>
 	<upperLimit>122.49998088079637</upperLimit>
 	<lowerLimit>-122.49998088079637</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>122.49998088079637</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-122.49998088079637</deviceTheoreticalMin>
@@ -2561,9 +2537,8 @@
 	<scale>1.0</scale>
 	<upperLimit>215.00000620010186</upperLimit>
 	<lowerLimit>-215.00000620010186</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>215.00000620010186</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-215.00000620010186</deviceTheoreticalMin>
@@ -2618,9 +2593,8 @@
 	<scale>1.0</scale>
 	<upperLimit>190.00002413359965</upperLimit>
 	<lowerLimit>-190.00002413359965</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>190.00002413359965</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-190.00002413359965</deviceTheoreticalMin>
@@ -2675,9 +2649,8 @@
 	<scale>1.0</scale>
 	<upperLimit>125.0000249240702</upperLimit>
 	<lowerLimit>-125.0000249240702</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>125.0000249240702</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-125.0000249240702</deviceTheoreticalMin>
@@ -2732,9 +2705,8 @@
 	<scale>1.0</scale>
 	<upperLimit>359.9999823999062</upperLimit>
 	<lowerLimit>-359.9999823999062</lowerLimit>
-	<upperVelocity>10000000.0</upperVelocity>
-	<lowerVelocity>-10000000.0</lowerVelocity>
-	<lowerVelocity>-2000.0</lowerVelocity>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
 	<deviceTheoreticalMax>359.9999823999062</deviceTheoreticalMax>
 	<deviceTheoreticalMin>-359.9999823999062</deviceTheoreticalMin>
@@ -2793,8 +2765,8 @@
 </ZframeToRAS>
 
 <baseToZframe>
-	<x>-212.2265186756223</x>
-	<y>-200.7871130596427</y>
+	<x>-142.22651867562223</x>
+	<y>-79.54355652982133</y>
 	<z>0.0</z>
 	<rotw>0.18301286160086067</rotw>
 	<rotx>0.6830121058509352</rotx>

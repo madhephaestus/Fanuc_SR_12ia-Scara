@@ -34,7 +34,7 @@ for(DHParameterKinematics k:base.getAllDHChains()) {
 	}
 	def rotation = new TransformNR(0,0,0,new RotationNR(0, rot, 0))
 	TransformNR limbRoot = rotation
-		.times(new TransformNR(baseCircleDiam,yOffset,0,new RotationNR(0, 0,0)))
+		.times(new TransformNR(baseCircleDiam/2,yOffset,0,new RotationNR(0, 0,0)))
 	limbRoot.setRotation(new RotationNR(0,rot-90,-89.9999))
 	
 	k.setDH_D(1, powerLinkLen)
@@ -72,7 +72,7 @@ for(DHParameterKinematics k:base.getAllDHChains()) {
 			}
 		}
 	}
-	
+	println limbRoot
 	k.setRobotToFiducialTransform(limbRoot)
 }
 
