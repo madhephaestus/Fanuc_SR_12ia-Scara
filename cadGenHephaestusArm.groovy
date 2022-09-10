@@ -46,7 +46,6 @@ CSG moveDHValues(CSG incoming,DHLink dh ){
 	Transform move = com.neuronrobotics.bowlerstudio.physics.TransformFactory.nrToCSG(step)
 	return incoming.transformed(move)
 }
-
 return new ICadGenerator(){
 
 			@Override
