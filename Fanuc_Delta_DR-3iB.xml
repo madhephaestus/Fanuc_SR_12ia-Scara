@@ -2,7 +2,7 @@
 <mobilebase>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
-		<file>cadGenHephaestusArm.groovy</file>
+		<file>deltaCad.groovy</file>
 	</cadEngine>
 	<driveEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
@@ -22,7 +22,7 @@
 <parallelGroup>delta</parallelGroup>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
-		<file>cadGenHephaestusArm.groovy</file>
+		<file>deltaCad.groovy</file>
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
@@ -919,7 +919,7 @@
 </parallelGroupTipOffset>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
-		<file>cadGenHephaestusArm.groovy</file>
+		<file>deltaCad.groovy</file>
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
@@ -1304,7 +1304,7 @@
 </parallelGroupTipOffset>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
-		<file>cadGenHephaestusArm.groovy</file>
+		<file>deltaCad.groovy</file>
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
@@ -1673,7 +1673,7 @@
 <name>DeltaChain1a</name>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
-		<file>cadGenHephaestusArm.groovy</file>
+		<file>deltaCad.groovy</file>
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
@@ -2042,7 +2042,7 @@
 <name>DeltaChain2a</name>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
-		<file>cadGenHephaestusArm.groovy</file>
+		<file>deltaCad.groovy</file>
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
@@ -2411,7 +2411,7 @@
 <name>DeltaChain3a</name>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
-		<file>cadGenHephaestusArm.groovy</file>
+		<file>deltaCad.groovy</file>
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
