@@ -76,7 +76,7 @@ return new ICadGenerator(){
 						link.setColor(Color.SILVER)
 						parts.add(link)
 					}
-				}else if(arg1==6) {
+				}else if(arg1==7) {
 					MobileBase handMB = arg0.getSlaveMobileBase(arg1)
 					parts.addAll(getHandParts(handMB))
 
