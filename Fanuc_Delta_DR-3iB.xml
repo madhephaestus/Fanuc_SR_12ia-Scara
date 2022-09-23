@@ -359,13 +359,69 @@
 	<DHParameters>
 		<Delta>0.0</Delta>
 		<Theta>0.0</Theta>
-		<Radius>0.0</Radius>
+		<Radius>100.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
 
 </link>
 <link>
-	<name>ToolFrame</name>
+	<name>ToolFrame1</name>
+	<deviceName>virtualLinkProvider</deviceName>
+	<type>virtual</type>
+	<index>21</index>
+	<scale>1.0</scale>
+	<upperLimit>360.0</upperLimit>
+	<lowerLimit>-360.0</lowerLimit>
+	<upperVelocity>1.0E7</upperVelocity>
+	<lowerVelocity>-1.0E7</lowerVelocity>
+	<staticOffset>0.0</staticOffset>
+	<deviceTheoreticalMax>360.0</deviceTheoreticalMax>
+	<deviceTheoreticalMin>-360.0</deviceTheoreticalMin>
+	<isLatch>false</isLatch>
+	<indexLatch>0.0</indexLatch>
+	<isStopOnLatch>false</isStopOnLatch>
+	<homingTPS>10000000</homingTPS>
+
+	<vitamins>
+		<vitamin>
+			<name>electroMechanical</name>
+			<type>LewanSoulMotor</type>
+			<id>lx_224</id>
+		</vitamin>
+		<vitamin>
+			<name>shaft</name>
+			<type>LewanSoulHorn</type>
+			<id>round_m3_bolts</id>
+		</vitamin>
+
+	</vitamins>
+	<passive>false</passive>
+	<mass>0.0</mass>
+	<centerOfMassFromCentroid>	<x>0.0</x>
+	<y>0.0</y>
+	<z>0.0</z>
+	<rotw>1.0</rotw>
+	<rotx>-0.0</rotx>
+	<roty>-0.0</roty>
+	<rotz>-0.0</rotz></centerOfMassFromCentroid>
+	<imuFromCentroid>	<x>0.0</x>
+	<y>0.0</y>
+	<z>0.0</z>
+	<rotw>1.0</rotw>
+	<rotx>-0.0</rotx>
+	<roty>-0.0</roty>
+	<rotz>-0.0</rotz></imuFromCentroid>
+
+	<DHParameters>
+		<Delta>0.0</Delta>
+		<Theta>90.0</Theta>
+		<Radius>100.0</Radius>
+		<Alpha>0.0</Alpha>
+	</DHParameters>
+
+</link>
+<link>
+	<name>ToolFrame2</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
 	<index>6</index>
@@ -610,13 +666,13 @@
 </link>
 
 <ZframeToRAS
->	<x>-130.9999860692248</x>
-	<y>10.450314833097806</y>
-	<z>-47.19691574899278</z>
-	<rotw>0.38268342658924415</rotw>
-	<rotx>6.712485045331579E-5</rotx>
-	<roty>8.062519246913445E-7</roty>
-	<rotz>-0.9238795324648766</rotz>
+>	<x>374.6000035870748</x>
+	<y>-23.94967416947353</y>
+	<z>-219.97927844398023</z>
+	<rotw>-0.2588191136238921</rotw>
+	<rotx>-4.5398259688302825E-5</rotx>
+	<roty>8.32944189026241E-7</roty>
+	<rotz>-0.9659258068616073</rotz>
 </ZframeToRAS>
 
 <baseToZframe>
@@ -811,13 +867,13 @@
 </link>
 
 <ZframeToRAS
->	<x>-130.9999860692248</x>
-	<y>10.450314833097806</y>
-	<z>-47.19691574899278</z>
-	<rotw>0.38268342658924415</rotw>
-	<rotx>6.712485045331579E-5</rotx>
-	<roty>8.062519246913445E-7</roty>
-	<rotz>-0.9238795324648766</rotz>
+>	<x>374.6000035870748</x>
+	<y>-23.94967416947353</y>
+	<z>-219.97927844398023</z>
+	<rotw>-0.2588191136238921</rotw>
+	<rotx>-4.5398259688302825E-5</rotx>
+	<roty>8.32944189026241E-7</roty>
+	<rotz>-0.9659258068616073</rotz>
 </ZframeToRAS>
 
 <baseToZframe>
@@ -1012,13 +1068,13 @@
 </link>
 
 <ZframeToRAS
->	<x>-130.9999860692248</x>
-	<y>10.450314833097806</y>
-	<z>-47.19691574899278</z>
-	<rotw>0.38268342658924415</rotw>
-	<rotx>6.712485045331579E-5</rotx>
-	<roty>8.062519246913445E-7</roty>
-	<rotz>-0.9238795324648766</rotz>
+>	<x>374.6000035870748</x>
+	<y>-23.94967416947353</y>
+	<z>-219.97927844398023</z>
+	<rotw>-0.2588191136238921</rotw>
+	<rotx>-4.5398259688302825E-5</rotx>
+	<roty>8.32944189026241E-7</roty>
+	<rotz>-0.9659258068616073</rotz>
 </ZframeToRAS>
 
 <baseToZframe>
@@ -1213,13 +1269,13 @@
 </link>
 
 <ZframeToRAS
->	<x>-130.9999860692248</x>
-	<y>10.450314833097806</y>
-	<z>-47.19691574899278</z>
-	<rotw>0.38268342658924415</rotw>
-	<rotx>6.712485045331579E-5</rotx>
-	<roty>8.062519246913445E-7</roty>
-	<rotz>-0.9238795324648766</rotz>
+>	<x>374.6000035870748</x>
+	<y>-23.94967416947353</y>
+	<z>-219.97927844398023</z>
+	<rotw>-0.2588191136238921</rotw>
+	<rotx>-4.5398259688302825E-5</rotx>
+	<roty>8.32944189026241E-7</roty>
+	<rotz>-0.9659258068616073</rotz>
 </ZframeToRAS>
 
 <baseToZframe>
@@ -1235,23 +1291,23 @@
 </appendage>
 
 <ZframeToRAS>
-	<x>-30.999986054442672</x>
-	<y>-89.57788811871764</y>
-	<z>112.78545393990134</z>
-	<rotw>-2.9039082044097154E-11</rotw>
-	<rotx>1.2035361046330886E-10</rotx>
-	<roty>-0.9999999961157446</roty>
-	<rotz>-8.813915530421982E-5</rotz>
+	<x>374.60000439549697</x>
+	<y>-23.977875598710163</y>
+	<z>-59.979280929357174</z>
+	<rotw>2.2812031044998272E-5</rotw>
+	<rotx>-0.2588191166001275</rotx>
+	<roty>-0.9659258031109463</roty>
+	<rotz>-8.512587237729556E-5</rotz>
 </ZframeToRAS>
 
 <baseToZframe>
-	<x>100.0</x>
-	<y>100.0</y>
+	<x>0.0</x>
+	<y>0.0</y>
 	<z>160.0</z>
-	<rotw>8.06236985680554E-5</rotw>
-	<rotx>-0.9238795289934143</rotx>
-	<roty>0.3826834309079393</roty>
-	<rotz>-3.339542939556883E-5</rotz>
+	<rotw>8.726646248878822E-5</rotw>
+	<rotx>-0.9999999961922823</rotx>
+	<roty>-0.0</roty>
+	<rotz>-0.0</rotz>
 </baseToZframe>
 	<mass>0.001</mass>
 	<centerOfMassFromCentroid>	<x>0.0</x>
@@ -1293,10 +1349,10 @@
 	<x>140.0</x>
 	<y>83.4</y>
 	<z>0.0</z>
-	<rotw>0.5000004363321228</rotw>
-	<rotx>-0.49999956366749665</rotx>
-	<roty>-0.4999995636674967</roty>
-	<rotz>-0.5000004363321227</rotz>
+	<rotw>0.5000004363321227</rotw>
+	<rotx>-0.49999956366749654</rotx>
+	<roty>-0.4999995636674966</roty>
+	<rotz>-0.5000004363321225</rotz>
 </baseToZframe>
 
 </appendage>
@@ -2432,10 +2488,10 @@
 	<x>140.0</x>
 	<y>-83.4</y>
 	<z>0.0</z>
-	<rotw>0.5000004363321228</rotw>
-	<rotx>-0.49999956366749665</rotx>
-	<roty>-0.4999995636674967</roty>
-	<rotz>-0.5000004363321227</rotz>
+	<rotw>0.5000004363321227</rotw>
+	<rotx>-0.49999956366749654</rotx>
+	<roty>-0.4999995636674966</roty>
+	<rotz>-0.5000004363321225</rotz>
 </baseToZframe>
 
 </appendage>
