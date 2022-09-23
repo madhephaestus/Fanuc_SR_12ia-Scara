@@ -58,6 +58,7 @@ public class deltaIK implements DhInverseSolver {
 		//target =new TransformNR(x,y,z,new RotationNR(0,-180,0));
 		
 		RotationNR q = target.getRotation();
+		target =new TransformNR(x,y,z,new RotationNR(0.5, -0.5, 0.5, -0.5));
 		TransformNR newCenter =target.copy();
 		// Start by finding the IK to the wrist center
 		if(linkNum>=6) {
