@@ -58,7 +58,7 @@ public class deltaIK implements DhInverseSolver {
 		//target =new TransformNR(x,y,z,new RotationNR(0,-180,0));
 		
 		RotationNR q = target.getRotation();
-		if(jointSpaceVector.length>6) {
+		if(jointSpaceVector.length>7) {
 			TransformNR rot = new TransformNR(0,0,0,new RotationNR(0,0,90)).times(new TransformNR(0,0,0,q));
 			double az=Math.toDegrees(rot.getRotation().getRotationAzimuth())-90
 			double el=Math.toDegrees(rot.getRotation().getRotationElevation())
