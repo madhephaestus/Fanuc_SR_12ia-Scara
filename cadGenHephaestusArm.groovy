@@ -47,7 +47,11 @@ CSG moveDHValues(CSG incoming,DHLink dh ){
 	return incoming.transformed(move)
 }
 return new ICadGenerator(){
-
+			private ArrayList<CSG> getHandParts(MobileBase handMB){
+				return ScriptingEngine.gitScriptRun(
+						"https://github.com/madhephaestus/Fanuc_LR_Mate_200id_7L.git",
+						"makeModularHand.groovy",[handMB])
+			}
 			@Override
 			public ArrayList<CSG> generateCad(DHParameterKinematics arg0, int arg1) {
 				ArrayList<CSG> parts =  new ArrayList<>();
@@ -73,39 +77,9 @@ return new ICadGenerator(){
 						parts.add(link)
 					}
 				}else if(arg1==6) {
-					def calTipConeHeight = 22.5
-					def calSpikeRad=15.8/2
-					def calSpikeShaftlen = 160-calTipConeHeight
-					CSG tip = new Cylinder(0, // Radius at the bottom
-							calSpikeRad, // Radius at the top
-							calTipConeHeight, // Height
-							(int)30 //resolution
-							).toCSG()//convert to CSG to display                    			         ).toCSG()//convert to CSG to display
-					CSG calShaft =new Cylinder(calSpikeRad,calSpikeShaftlen).toCSG() // a one line Cylinder
-							.movez(calTipConeHeight)
-					def link = tip.union(calShaft)
-					link.setColor(Color.web("#C0C0C0"))
-					double fingerTop = 0
-					CSG finger=Vitamins.get(ScriptingEngine.fileFromGit(
-							"https://github.com/madhephaestus/Fanuc_LR_Mate_200id_7L.git",
-							"mesh/4acc-5k-kin-centered.stl")).rotz(-90).movez(fingerTop)
-							.setColor(Color.BLUE)
-					double seperation = 70
+					MobileBase handMB = arg0.getSlaveMobileBase(arg1)
+					parts.addAll(getHandParts(handMB))
 
-					CSG left= finger.movex(seperation/2)
-					CSG right= finger.rotz(180).movex(-seperation/2)
-					CSG hand = new Cube(finger.getTotalX()+seperation,finger.getTotalY(),25 ).toCSG()
-							.toZMin()
-							.movez(fingerTop)
-							.setColor(Color.WHITE)
-					CSG hose =new Cylinder(4, 60).toCSG()
-							.rotx(-70)
-							.movez(fingerTop+25)
-							.setColor(Color.LIGHTBLUE)
-					parts.addAll([hand, hose])
-					for(CSG c:parts) {
-						c.setManipulator(manipulator)
-					}
 				}
 				for(int i=0;i<parts.size();i++) {
 					parts.get(i).setName("Fanuc link "+arg1+" part "+i)
@@ -124,8 +98,8 @@ return new ICadGenerator(){
 						.movez(100)
 				base=base.movey(-base.getCenterY())
 				base=base.movex(-base.getCenterX())
-					.movex(-85)
-					.movey(20)
+						.movex(-85)
+						.movey(20)
 				Affine manipulator = arg0.getRootListener()
 				base.setManipulator(manipulator)
 
