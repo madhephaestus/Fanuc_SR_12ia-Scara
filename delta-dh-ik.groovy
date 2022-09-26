@@ -39,7 +39,7 @@ public class deltaIK implements DhInverseSolver {
 	}
 	private TransformNR toolOffset(int linkNum,ArrayList<DHLink> links, double[] jointSpaceVector) {
 		if(linkNum==8) {
-			println "All Tool frames"
+			//println "All Tool frames"
 		}
 		TransformNR wristCenterOffsetTransform =new TransformNR();
 		for(int i=5;i<linkNum;i++) {
@@ -47,9 +47,9 @@ public class deltaIK implements DhInverseSolver {
 			if(i==7){
 				//linkOffset=new TransformNR(links.get(i).DhStep(Math.toRadians(jointSpaceVector[i])));
 			}
-			if(linkNum==8) println "linkOffset "+i+" "+linkOffset
+			//if(linkNum==8) println "linkOffset "+i+" "+linkOffset
 			wristCenterOffsetTransform=wristCenterOffsetTransform.times(linkOffset)
-			if(linkNum==8) println "wristCenterOffsetTransform "+wristCenterOffsetTransform
+			//if(linkNum==8) println "wristCenterOffsetTransform "+wristCenterOffsetTransform
 		}
 		return wristCenterOffsetTransform
 	}
@@ -94,19 +94,19 @@ public class deltaIK implements DhInverseSolver {
 			// compute the transform from tip to wrist center
 			TransformNR wristCenterOffsetTransform =toolOffset(linkNum,links,jointSpaceVector)
 			try {
-				if(linkNum==8) println "\n target "+target
+				//if(linkNum==8) println "\n target "+target
 				//println wristCenterOffsetTransform
 				//System.out.println( wristCenterOffsetTransform
 				// take off the tool from the target to get the center of the wrist
 				TransformNR wristCenterOffsetTransformInverse = wristCenterOffsetTransform.inverse()
-				if(linkNum==8) println " wristCenterOffsetTransformInverse "+wristCenterOffsetTransformInverse
+				//if(linkNum==8) println " wristCenterOffsetTransformInverse "+wristCenterOffsetTransformInverse
 				def tmp =target.times(wristCenterOffsetTransformInverse);
 				//newCenter =tmp
 				newCenter.translateX(-wristCenterOffsetTransformInverse.getZ());
 				newCenter.translateY(-wristCenterOffsetTransformInverse.getX());
 				newCenter.translateZ(wristCenterOffsetTransformInverse.getY());
-				if(linkNum==8) println " new center "+tmp
-				if(linkNum==8) println "\n\n"
+				//if(linkNum==8) println " new center "+tmp
+				//if(linkNum==8) println "\n\n"
 			}catch(Throwable t) {
 				t.printStackTrace(System.out)
 			}
