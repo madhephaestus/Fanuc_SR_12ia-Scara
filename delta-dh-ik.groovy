@@ -32,20 +32,33 @@ public class deltaIK implements DhInverseSolver {
 	}
 	double length(TransformNR tr) {
 		return Math.sqrt(
-			Math.pow(tr.getX(), 2)+
-			Math.pow(tr.getY(), 2)+
-			Math.pow(tr.getZ(), 2)
-			);
+				Math.pow(tr.getX(), 2)+
+				Math.pow(tr.getY(), 2)+
+				Math.pow(tr.getZ(), 2)
+				);
 	}
-	
-	
+	private TransformNR toolOffset(int linkNum,ArrayList<DHLink> links) {
+		if(linkNum==8) {
+			println "All Tool frames"
+		}
+		TransformNR wristCenterOffsetTransform =new TransformNR();
+		for(int i=5;i<linkNum;i++) {
+			TransformNR linkOffset = linkOffset(links.get(i))
+			if(linkNum==8) println "linkOffset "+i+" "+linkOffset
+			wristCenterOffsetTransform=wristCenterOffsetTransform.times(linkOffset)
+			if(linkNum==8) println "wristCenterOffsetTransform "+wristCenterOffsetTransform
+		}
+		return wristCenterOffsetTransform
+	}
+
 	public double[] inverseKinematics6dof(TransformNR target, double[] jointSpaceVector, DHChain chain) {
-		double[] current = new double[jointSpaceVector.length]
-		for(int i=0;i<current.length;i++) {
+		int linkNum = jointSpaceVector.length;
+		double[] current = new double[linkNum]
+		for(int i=0;i<linkNum;i++) {
 			current[i]=jointSpaceVector[i];
 		}
 		ArrayList<DHLink> links = chain.getLinks();
-		int linkNum = jointSpaceVector.length;
+		
 		TransformNR l0Offset = linkOffset(links.get(0));
 		TransformNR l1Offset = linkOffset(links.get(1));
 		TransformNR l2Offset = linkOffset(links.get(2));
@@ -56,9 +69,9 @@ public class deltaIK implements DhInverseSolver {
 		double x = target.getX();
 		// delta kinematics has no rotation at this layer
 		//target =new TransformNR(x,y,z,new RotationNR(0,-180,0));
-		
+
 		RotationNR q = target.getRotation();
-		if(jointSpaceVector.length>7) {
+		if(linkNum>7) {
 			TransformNR rot = new TransformNR(0,0,0,new RotationNR(0,0,90)).times(new TransformNR(0,0,0,q));
 			double az=Math.toDegrees(rot.getRotation().getRotationAzimuth())-90
 			double el=Math.toDegrees(rot.getRotation().getRotationElevation())
@@ -71,33 +84,27 @@ public class deltaIK implements DhInverseSolver {
 			jointSpaceVector[7]=az
 			target =new TransformNR(x,y,z,new RotationNR(0.7071067811865476, 0, 0.7071067811865475, 0));
 		}
-		
+
 		TransformNR newCenter =target.copy();
 		// Start by finding the IK to the wrist center
 		if(linkNum>=6) {
-			//offset for tool
-			//if(debug)System.out.println( "Offestting for tool"
-			TransformNR tool = new TransformNR();
-			TransformNR tool2 = new TransformNR();
-			if(linkNum>6)
-				tool=linkOffset(links.get(6));
-			if(linkNum>7)
-				tool2=linkOffset(links.get(7));
-			TransformNR lastWrist = 	linkOffset(links.get(5))
 			// compute the transform from tip to wrist center
-			TransformNR wristCenterOffsetTransform = lastWrist.times(tool).times(tool2);
-			if(linkNum==8) {
-				println "Tool frames"
-				println tool2
-				println tool
-				println lastWrist
+			TransformNR wristCenterOffsetTransform =toolOffset(linkNum,links)
+			try {
+				if(linkNum==8) println "\n target "+target
+				//println wristCenterOffsetTransform
+				//System.out.println( wristCenterOffsetTransform
+				// take off the tool from the target to get the center of the wrist
+				TransformNR wristCenterOffsetTransformInverse = wristCenterOffsetTransform.inverse()
+				if(linkNum==8) println " wristCenterOffsetTransformInverse "+wristCenterOffsetTransformInverse
+				//newCenter = target.times(wristCenterOffsetTransformInverse);
+				if(linkNum==8) println " new center "+newCenter
+				if(linkNum==8) println "\n\n"
+			}catch(Throwable t) {
+				t.printStackTrace(System.out)
 			}
-			//println wristCenterOffsetTransform
-			//System.out.println( wristCenterOffsetTransform
-			// take off the tool from the target to get the center of the wrist
-			newCenter = target.times(wristCenterOffsetTransform.inverse());
 		}
-
+		
 		// recompute the X,y,z with the new center
 		z = newCenter.getZ();
 		y = newCenter.getY();
@@ -118,13 +125,13 @@ public class deltaIK implements DhInverseSolver {
 		if(debug)System.out.println( "elbowLink2CompositeLength "+elbowLink2CompositeLength);
 		if(debug)System.out.println( "Elbo Hypotinuse "+wristVect);
 		double elbowTiltAngle =-( Math.toDegrees(
-			Math.acos(
-			(
+				Math.acos(
+				(
 				Math.pow(elbowLink2CompositeLength,2)+
 				Math.pow(elbowLink1CompositeLength,2)
 				-Math.pow(wristVect,2)
 				)
-			/
+				/
 			(2*elbowLink2CompositeLength*elbowLink1CompositeLength)
 			)
 			));
@@ -139,27 +146,27 @@ public class deltaIK implements DhInverseSolver {
 		double L2 = length(l3Offset);
 		
 		if(debug)System.out.println( "L1 "+L1+" l2 "+L2+" z "+elZ+" x "+elX);
-		/** 
-		 * System of equasions 
-		 * Theta2 = asin(z/wristVect)
-		 * l3 = wristVect * cos( theta2)
-		 * theta1 = acos(l1^2+x^2-l3^2/2*l1*x)
-		 * 
-		 */
+		/**
+		* System of equasions
+		* Theta2 = asin(z/wristVect)
+		* l3 = wristVect * cos( theta2)
+		* theta1 = acos(l1^2+x^2-l3^2/2*l1*x)
+		*
+		*/
 		double asinVal = elZ/L2;
 		if(asinVal>1 || asinVal<-1)
 			throw new RuntimeException("Target outside workspace, passive links too short to reach "+L2);
 		double theta2 = Math.asin(asinVal);
-		
+
 		double L3 = L2*Math.cos(theta2);
 		double theta1 = Math.acos(
-			(
-				Math.pow(L1, 2) + 
+				(
+				Math.pow(L1, 2) +
 				Math.pow(elX, 2)-
 				Math.pow(L3, 2)
-				 )/
-			(2 * L1 *elX)	
-		);
+				)/
+				(2 * L1 *elX)
+				);
 		jointSpaceVector[0]=-(90-(Math.toDegrees(theta1)+baseVectorAngle));
 		TransformNR reorent;
 		try {
@@ -167,27 +174,27 @@ public class deltaIK implements DhInverseSolver {
 		}catch (Throwable t){
 			//t.printStackTrace()
 			throw new RuntimeException( "error calculating base angle: \nL1 "+L1+
-				" \nl2 "+L2+
-				" \nz "+elZ+
-				" \nx "+elX+
-				" \nl3 "+L3+
-				" \ntheta2 "+Math.toDegrees(theta2)+
-				" \nasinVal "+asinVal
-				
-				);
+			" \nl2 "+L2+
+			" \nz "+elZ+
+			" \nx "+elX+
+			" \nl3 "+L3+
+			" \ntheta2 "+Math.toDegrees(theta2)+
+			" \nasinVal "+asinVal
+
+			);
 		}
 		TransformNR sphericalElbowTartget = reorent.times(newCenter);
-		//System.out.println( newCenter 
+		//System.out.println( newCenter
 		//System.out.println( 	sphericalElbowTartget
 		sphericalElbowTartget = new TransformNR(0.0,-sphericalElbowTartget.getY(),0.0, new RotationNR()).times(sphericalElbowTartget);
 		//System.out.println( 	sphericalElbowTartget
 		double theta3 = Math.atan2(sphericalElbowTartget.getZ(), sphericalElbowTartget.getX());
 		jointSpaceVector[1]=-Math.toDegrees(theta3) ;
-		
+
 		//return jointSpaceVector
 
 		/**
-		// compute the top of the wrist now that the first 3 links are calculated
+		 // compute the top of the wrist now that the first 3 links are calculated
 		 * 
 		 */
 		double[] wristLinks=new double[jointSpaceVector.length];
@@ -201,11 +208,11 @@ public class deltaIK implements DhInverseSolver {
 		chain.forwardKinematicsMatrix(wristLinks,chainToLoad);
 		TransformNR	startOfWristSet=chain.kin.inverseOffset(chainToLoad.get(2));
 		TransformNR virtualcenter = newCenter.times(new TransformNR(0,0,10,
-			new RotationNR(Math.toDegrees(links.get(5).getAlpha()),0,0)));
+				new RotationNR(Math.toDegrees(links.get(5).getAlpha()),0,0)));
 		TransformNR wristMOvedToCenter0 =startOfWristSet
-											.inverse()// move back from base ot wrist to world home
-											.times(virtualcenter);// move forward to target, leaving the angle between the tip and the start of the rotation 
-		//if(debug)System.out.println( 	wristMOvedToCenter0								
+				.inverse()// move back from base ot wrist to world home
+				.times(virtualcenter);// move forward to target, leaving the angle between the tip and the start of the rotation
+		//if(debug)System.out.println( 	wristMOvedToCenter0
 		RotationNR qWrist=wristMOvedToCenter0.getRotation();
 		if(wristMOvedToCenter0.getX()==0&&wristMOvedToCenter0.getY()==0) {
 			System.out.println( "Singularity! try something else");
@@ -217,10 +224,10 @@ public class deltaIK implements DhInverseSolver {
 		wristLinks[3]=jointSpaceVector[3];
 		if(jointSpaceVector.length==4)
 			return jointSpaceVector;
-		
+
 		chainToLoad =new ArrayList<>();
 		/**
-		// Calculte the second angle
+		 // Calculte the second angle
 		 * 
 		 */
 		chainToLoad.clear();
@@ -228,8 +235,8 @@ public class deltaIK implements DhInverseSolver {
 		TransformNR	startOfWristSet2=chain.kin.inverseOffset(chainToLoad.get(3));
 
 		TransformNR wristMOvedToCenter1 =startOfWristSet2
-											.inverse()// move back from base ot wrist to world home
-											.times(virtualcenter);// move forward to target, leaving the angle between the tip and the start of the rotation
+				.inverse()// move back from base ot wrist to world home
+				.times(virtualcenter);// move forward to target, leaving the angle between the tip and the start of the rotation
 		//if(debug)System.out.println( " Middle link ="	+wristMOvedToCenter1
 		RotationNR qWrist2=wristMOvedToCenter1.getRotation();
 		if(wristMOvedToCenter1.getX()==0&&wristMOvedToCenter1.getY()==0) {
@@ -237,37 +244,45 @@ public class deltaIK implements DhInverseSolver {
 			return inverseKinematics6dof(target.copy().translateX(0.01),jointSpaceVector,chain);
 		}
 		jointSpaceVector[4]=(Math.toDegrees(Math.atan2(wristMOvedToCenter1.getY(), wristMOvedToCenter1.getX()))-
-			Math.toDegrees(links.get(4).getTheta())-
-			90);
+				Math.toDegrees(links.get(4).getTheta())-
+				90);
 		wristLinks[4]=jointSpaceVector[4];
 		if(jointSpaceVector.length==5)
 			return jointSpaceVector;
 		chainToLoad =new ArrayList<>();
 		/**
-		// Calculte the last angle
+		 // Calculte the last angle
 		 * 
 		 */
 		chain.forwardKinematicsMatrix(wristLinks,chainToLoad);
 		TransformNR	startOfWristSet3=chain.kin.inverseOffset(chainToLoad.get(4));
-		TransformNR tool = new TransformNR();
-		if(linkNum==7)
-			tool=linkOffset(links.get(6));
+
 		TransformNR wristMOvedToCenter2 =startOfWristSet3
-											.inverse()// move back from base ot wrist to world home
-											.times(target.times(tool.inverse()));// move forward to target, leaving the angle between the tip and the start of the rotation
+				.inverse()// move back from base ot wrist to world home
+				.times(target.times(toolOffset(linkNum,links).inverse()));// move forward to target, leaving the angle between the tip and the start of the rotation
 		//if(debug)System.out.println( "\n\nLastLink "	+wristMOvedToCenter2
 		RotationNR qWrist3=wristMOvedToCenter2.getRotation();
 		jointSpaceVector[5]=(Math.toDegrees(qWrist3.getRotationAzimuth())-Math.toDegrees(links.get(5).getTheta()));
-		
-		double[] nrm = WristNormalizer.normalize([jointSpaceVector[3],jointSpaceVector[4],jointSpaceVector[5]]as double[],
-			[current[3],current[4],current[5]]as double[],
-			chain);
+
+		double[] nrm = WristNormalizer.normalize([
+			jointSpaceVector[3],
+			jointSpaceVector[4],
+			jointSpaceVector[5]
+		]as double[],
+		[
+			current[3],
+			current[4],
+			current[5]
+		]as double[],
+		chain);
 		jointSpaceVector[3]=nrm[0]
 		jointSpaceVector[4]=nrm[1]
 		jointSpaceVector[5]=nrm[2]
-		
+
 		return jointSpaceVector;
 	}
+	
+
 	public static double[] normalize(double[] calculated, double[] current, DHChain chain) {
 		AbstractKinematicsNR kin = chain.kin;
 		// DecimalFormat df = new DecimalFormat("000.00");
@@ -280,9 +295,9 @@ public class deltaIK implements DhInverseSolver {
 		double[] calculated7 =option( calculated[0] + 360, calculated[1], calculated[2] );
 		double[] als4 =option( alt1[0] - 360, alt1[1], alt1[2] );
 		double[] alt5 =option( alt1[0] + 360, alt1[1], alt1[2] );
-		
-		
-		
+
+
+
 		HashMap<double[], Double> scores = new HashMap<>();
 		score(calculated, current, scores, kin);
 		score(alt1, current, scores, kin);
@@ -298,7 +313,7 @@ public class deltaIK implements DhInverseSolver {
 		score(option( alt1[0] -180, alt1[1], -alt1[2]+180 ), current, scores, kin);
 		score(option( calculated[0] +180, -calculated[1], calculated[2]-180 ), current, scores, kin);
 		score(option( alt1[0] +180, -alt1[1], alt1[2]-180 ), current, scores, kin);
-		
+
 		if (scores.size() > 0) {
 			double[] start =calculated ;
 			if(scores.get(start)==null) {
@@ -322,16 +337,16 @@ public class deltaIK implements DhInverseSolver {
 		throw new RuntimeException("No Wrist Solution! ");
 	}
 	private static double[] option(double w1,double w2,double w3) {
-		return [w1,w2,w3] as double[];
+		return [w1, w2, w3] as double[];
 	}
-	
+
 	private static void score(double[] calculated, double[] current, HashMap<double[], Double> scores,
 			AbstractKinematicsNR kin) {
 		double delt = 0;
 		for (int i = 0; i < 3; i++) {
 			int i3 = i + 3;
 			calculated[i] = calculated[i] % 360;
-			
+
 			if (calculated[i] > kin.getMaxEngineeringUnits(i3)) {
 				return;
 			}
