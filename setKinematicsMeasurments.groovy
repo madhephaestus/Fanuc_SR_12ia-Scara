@@ -19,7 +19,7 @@ double powerLinkLen = 565
 double passiveLinkLen = 1260
 double eoaPlatRad =75
 double passiveSepDist = 166.8
-
+DHParameterKinematics tar=null
 for(DHParameterKinematics k:base.getAllDHChains()) {
 	String name = k.getScriptingName()
 	double yOffset = passiveSepDist/2
@@ -40,39 +40,25 @@ for(DHParameterKinematics k:base.getAllDHChains()) {
 	k.setDH_D(1, powerLinkLen)
 	k.setDH_D(3, passiveLinkLen)
 	ParallelGroup baseGetParallelGroup = base.getParallelGroup(k)
+	if(k.getNumberOfLinks()==8) {
+		k.setDH_R(5, passiveSepDist/2)
+		k.setDH_R(6, eoaPlatRad)
+		tar=k
+	}
 	if(baseGetParallelGroup!=null && !name.endsWith("1")) {
-		double centerx = passiveSepDist/2
-		double centery =eoaPlatRad
-		TransformNR local = new TransformNR(-centery,
-		-centerx ,
-		0,new RotationNR() )
-		tipLoc = rotation
-		.times(new TransformNR(centerx,centery,0,new RotationNR(0, 0,0)))
+		double centerx = eoaPlatRad
+		double centery =passiveSepDist/2
+		TransformNR	tipLoc = rotation
+							.times(new TransformNR(centerx,centery,0,new RotationNR(0, 0,0)))
 		tipLoc.setRotation(new RotationNR())
-		local=tipLoc
-		.times(new TransformNR(-centerx,-centery,0,new RotationNR()))
+				.times(new TransformNR(-centerx,-centery,0,new RotationNR()))
 		println name
-		println local
-		baseGetParallelGroup.setTipOffset(k, local)
+		println tipLoc
+		baseGetParallelGroup.setTipOffset(k, tipLoc)
 	}
-	for(int i=0;i<k.getNumberOfLinks();i++) {
-		MobileBase kGetSlaveMobileBase = k.getSlaveMobileBase(i)
-		if(kGetSlaveMobileBase!=null) {
-			println "Found hand "+kGetSlaveMobileBase.getScriptingName()
-			for(DHParameterKinematics n:kGetSlaveMobileBase.getAllDHChains()) {
-				String namef =n.getScriptingName()
-				double xoffset=-25
-				double az = -89.99
-				if(namef.endsWith("0")) {
-					xoffset=25
-					az=0
-				}
-				TransformNR finLoc =new TransformNR(xoffset+eoaPlatRad,passiveSepDist/2,0,new RotationNR(0, az,-89))
-				n.setRobotToFiducialTransform(finLoc)
-			}
-		}
-	}
+
 	println limbRoot
 	k.setRobotToFiducialTransform(limbRoot)
 }
+base.getParallelGroup(tar).setDesiredTaskSpaceTransform(new TransformNR(), 0)
 
