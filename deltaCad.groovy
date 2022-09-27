@@ -93,7 +93,7 @@ return new ICadGenerator(){
 						rotZPlate=rotZPlate.rotz(180)
 					}
 					rotZPlate.setManipulator(manipulator)
-					rotZPlate.setColor(Color.SILVER)
+					rotZPlate.setColor(Color.BLACK)
 					parts.add(rotZPlate)
 					
 				}else if(arg1==6) {
