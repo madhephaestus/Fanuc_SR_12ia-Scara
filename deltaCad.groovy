@@ -55,6 +55,7 @@ return new ICadGenerator(){
 			@Override
 			public ArrayList<CSG> generateCad(DHParameterKinematics arg0, int arg1) {
 				ArrayList<CSG> parts =  new ArrayList<>();
+				
 				DHLink dh = arg0.getDhLink(arg1)
 				Affine manipulator = arg0.getLinkObjectManipulator(arg1)
 				if(arg1==0) {
@@ -76,14 +77,62 @@ return new ICadGenerator(){
 						link.setColor(Color.SILVER)
 						parts.add(link)
 					}
+				}else if(arg1==2) {
+					CSG rotZPlate =  Vitamins.get(ScriptingEngine.fileFromGit(
+						"https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git",
+						"stl/passive-a.STL"))
+						.roty(-28.5)
+						.rotx(-1)
+					rotZPlate=rotZPlate
+								.movex(-rotZPlate.getCenterX())
+								.movey(-rotZPlate.getCenterY())
+								.toZMin()
+								//.movex(-20)
+								.movez(-20)
+					if(!arg0.getScriptingName().endsWith("a")) {
+						rotZPlate=rotZPlate.rotz(180)
+					}
+					rotZPlate.setManipulator(manipulator)
+					rotZPlate.setColor(Color.SILVER)
+					parts.add(rotZPlate)
+					
+				}else if(arg1==6) {
+					CSG eoatPlate  = Vitamins.get(ScriptingEngine.fileFromGit(
+						"https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git",
+						"stl/endPlate.STL"))
+					eoatPlate=eoatPlate
+						.movex(-eoatPlate.getCenterX())
+						.movey(-eoatPlate.getCenterY())
+						.toZMax()
+						.rotx(180)
+						.movex(10)
+						.movez(-20)
+					eoatPlate.setManipulator(manipulator)
+					eoatPlate.setColor(Color.SILVER)
+					parts.add(eoatPlate)
+					
 				}else if(arg1==7) {
 					MobileBase handMB = arg0.getSlaveMobileBase(arg1)
 					parts.addAll(getHandParts(handMB))
-
+					
+					CSG rotZPlate =  Vitamins.get(ScriptingEngine.fileFromGit(
+						"https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git",
+						"stl/rotzLink.STL"))
+					rotZPlate=rotZPlate
+								.movex(-rotZPlate.getCenterX())
+								.movey(-rotZPlate.getCenterY())
+								.toZMin()
+								.movez(160)
+					
+					rotZPlate.setManipulator(manipulator)
+					rotZPlate.setColor(Color.SILVER)
+					parts.add(rotZPlate)
+					
 				}
 				for(int i=0;i<parts.size();i++) {
 					parts.get(i).setName("Fanuc link "+arg1+" part "+i)
 				}
+				if(parts.size()==0)parts.add(new Cube(0.001).toCSG())
 				return parts;
 			}
 
