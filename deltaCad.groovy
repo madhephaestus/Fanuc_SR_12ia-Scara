@@ -77,10 +77,10 @@ return new ICadGenerator(){
 						link.setColor(Color.SILVER)
 						parts.add(link)
 					}
-				}else if(arg1==2) {
+				}else if(arg1==2 && !arg0.getScriptingName().contains("fourthAxis")) {
 					CSG rotZPlate =  Vitamins.get(ScriptingEngine.fileFromGit(
 						"https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git",
-						"stl/passive-a.STL"))
+						"stl/passive-a.stl"))
 						.roty(-28.5)
 						.rotx(-1)
 					rotZPlate=rotZPlate
@@ -94,6 +94,26 @@ return new ICadGenerator(){
 					}
 					rotZPlate.setManipulator(manipulator)
 					rotZPlate.setColor(Color.BLACK)
+					parts.add(rotZPlate)
+					
+				}else if(arg1==2 && arg0.getScriptingName().contains("fourthAxis")) {
+					CSG rotZPlate =  Vitamins.get(ScriptingEngine.fileFromGit(
+						"https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git",
+						"stl/motor4.stl"))
+						.roty(180-28.5)
+						.rotx(1)
+						.rotz(180)
+					rotZPlate=rotZPlate
+								.movex(-rotZPlate.getCenterX()-30)
+								.movey(-rotZPlate.getCenterY()+1)
+								.toZMin()
+								.movez(-90)
+								
+					if(!arg0.getScriptingName().endsWith("a")) {
+						rotZPlate=rotZPlate.rotz(180)
+					}
+					rotZPlate.setManipulator(manipulator)
+					rotZPlate.setColor(Color.SILVER)
 					parts.add(rotZPlate)
 					
 				}else if(arg1==6) {
