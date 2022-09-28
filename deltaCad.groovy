@@ -101,7 +101,7 @@ return new ICadGenerator(){
 						"https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git",
 						"stl/motor4.stl"))
 						.roty(180-28.5)
-						.rotx(1)
+						.rotx(1.5)
 						.rotz(180)
 					rotZPlate=rotZPlate
 								.movex(-rotZPlate.getCenterX()-30)
