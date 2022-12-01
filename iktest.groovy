@@ -7,7 +7,7 @@ import com.neuronrobotics.sdk.addons.kinematics.math.TransformNR
 import com.neuronrobotics.sdk.common.DeviceManager
 
 DecimalFormat df = new DecimalFormat("000.00");
-MobileBase base=DeviceManager.getSpecificDevice( "Fanuc_Delta_DR",{ScriptingEngine.gitScriptRun(	"https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git", "Fanuc_Delta_DR-3iB.xml", null )})
+MobileBase base=DeviceManager.getSpecificDevice( "Fanuc_Scara_SR_12ia",{ScriptingEngine.gitScriptRun(	"https://github.com/madhephaestus/Fanuc_SR_12ia-Scara.git", "Fanuc_SR_12ia.xml", null )})
 
 
 DHParameterKinematics mainLimb = base.getAllDHChains().get(0)
