@@ -11,16 +11,16 @@ MobileBase base=DeviceManager.getSpecificDevice( "Fanuc_Scara_SR_12ia",{Scriptin
 
 
 DHParameterKinematics mainLimb = base.getAllDHChains().get(0)
-double[] links = [0,-35,30,0,4]
+double[] links = [10,-35,50,0,0]
 
 //mainLimb.setDesiredJointSpaceVector(links,0)
 
-TransformNR Tip= mainLimb.calcHome()
+TransformNR Tip= mainLimb.forwardOffset(mainLimb.forwardKinematics(links))
 println "Home: "+Tip
 
 double[] linksComuted = mainLimb.inverseKinematics(mainLimb.inverseOffset(Tip))
-//mainLimb.setDesiredJointSpaceVector(linksComuted,0)
-mainLimb.setDesiredTaskSpaceTransform(Tip, 0)
+//mainLimb.setDesiredJointSpaceVector(links,0)
+//mainLimb.setDesiredTaskSpaceTransform(Tip, 0)
 
 println links.collect{df.format(it)+"\t"}
 println "Computed:"
