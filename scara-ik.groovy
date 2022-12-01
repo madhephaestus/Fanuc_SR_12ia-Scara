@@ -19,7 +19,7 @@ import org.apache.commons.math3.geometry.euclidean.threed.RotationOrder
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 
 public class deltaIK implements DhInverseSolver {
-	boolean debug = false;
+	boolean debug = true;
 
 	int limbIndex =0;
 
@@ -112,8 +112,8 @@ public class deltaIK implements DhInverseSolver {
 		}
 		if(debug)System.out.println( "Wrist center for IK "+x+","+y+","+z);
 		double baseVectorAngle = Math.toDegrees(Math.atan2(y , x));
-		double elbowLink1CompositeLength = length(l1Offset);
-		double elbowLink2CompositeLength=length(l3Offset);
+		double elbowLink1CompositeLength = length(l0Offset);
+		double elbowLink2CompositeLength=length(l1Offset);
 		double wristVect = length(newCenter);
 		if(debug)System.out.println( "elbowLink1CompositeLength "+elbowLink1CompositeLength);
 		if(debug)System.out.println( "elbowLink2CompositeLength "+elbowLink2CompositeLength);
