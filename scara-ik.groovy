@@ -42,7 +42,7 @@ public class deltaIK implements DhInverseSolver {
 			//println "All Tool frames"
 		}
 		TransformNR wristCenterOffsetTransform =new TransformNR();
-		for(int i=5;i<linkNum;i++) {
+		for(int i=4;i<linkNum;i++) {
 			TransformNR linkOffset = linkOffset(links.get(i))
 			if(i==7){
 				//linkOffset=new TransformNR(links.get(i).DhStep(Math.toRadians(jointSpaceVector[i])));
@@ -74,23 +74,10 @@ public class deltaIK implements DhInverseSolver {
 		//target =new TransformNR(x,y,z,new RotationNR(0,-180,0));
 
 		RotationNR q = target.getRotation();
-		if(linkNum>7) {
-			TransformNR rot = new TransformNR(0,0,0,new RotationNR(0,0,90)).times(new TransformNR(0,0,0,q));
-			double az=Math.toDegrees(rot.getRotation().getRotationAzimuth())-90
-			double el=Math.toDegrees(rot.getRotation().getRotationElevation())
-			double tlt=Math.toDegrees(rot.getRotation().getRotationTilt())
-			if(az<-180)
-				az+=360;
-			if(az>180)
-				az-=360
-			//println az+ " "+el+" "+tlt
-			jointSpaceVector[7]=-az+180
-			target =new TransformNR(x,y,z,new RotationNR(0.7071067811865476, 0, 0.7071067811865475, 0));
-		}
 
 		TransformNR newCenter =target.copy();
 		// Start by finding the IK to the wrist center
-		if(linkNum>=6) {
+		if(linkNum>4) {
 			// compute the transform from tip to wrist center
 			TransformNR wristCenterOffsetTransform =toolOffset(linkNum,links,jointSpaceVector)
 			try {

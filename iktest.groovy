@@ -22,7 +22,7 @@ double[] linksComuted = mainLimb.inverseKinematics(mainLimb.inverseOffset(Tip))
 mainLimb.setDesiredTaskSpaceTransform(Tip, 0)
 
 println links.collect{df.format(it)+"\t"}
-
+println "Computed:"
 println linksComuted.collect{df.format(it)+"\t"}
 
 
@@ -31,6 +31,7 @@ def difference =[]
 for(int i=0;i<linksComuted.length;i++) {
 	difference.add(df.format(links[i]-linksComuted[i])+"\t")
 }
+println "Difference:"
 println difference
 
 def lim =[]
