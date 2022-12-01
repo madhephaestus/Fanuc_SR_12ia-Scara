@@ -11,7 +11,7 @@ MobileBase base=DeviceManager.getSpecificDevice( "Fanuc_Scara_SR_12ia",{Scriptin
 
 
 DHParameterKinematics mainLimb = base.getAllDHChains().get(0)
-double[] links = [0,-35,30,0,4,0,0]
+double[] links = [0,-35,30,0,4]
 
 //mainLimb.setDesiredJointSpaceVector(links,0)
 
@@ -28,13 +28,13 @@ println linksComuted.collect{df.format(it)+"\t"}
 
 
 def difference =[]
-for(int i=0;i<links.length;i++) {
+for(int i=0;i<linksComuted.length;i++) {
 	difference.add(df.format(links[i]-linksComuted[i])+"\t")
 }
 println difference
 
 def lim =[]
-for(int i=0;i<links.length;i++) {
+for(int i=0;i<linksComuted.length;i++) {
 	lim.add(df.format(Math.toDegrees(mainLimb.getDH_Theta(i)))+"\t")
 }
 println "\n\nThetas "+lim
