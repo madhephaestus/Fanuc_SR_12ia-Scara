@@ -26,10 +26,10 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git</git>
-		<file>delta-dh-ik.groovy</file>
+		<file>scara-ik.groovy</file>
 	</kinematics>
 <link>
-	<name>powered</name>
+	<name>shoulder</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
 	<index>0</index>
@@ -85,7 +85,7 @@
 
 </link>
 <link>
-	<name>spere-elbow-1</name>
+	<name>elbow</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
 	<index>1</index>
@@ -141,7 +141,7 @@
 
 </link>
 <link>
-	<name>sphere-elbow-2</name>
+	<name>z</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
 	<index>2</index>
@@ -249,174 +249,6 @@
 		<Theta>-0.0</Theta>
 		<Radius>0.0</Radius>
 		<Alpha>90.0</Alpha>
-	</DHParameters>
-
-</link>
-<link>
-	<name>wrist2</name>
-	<deviceName>virtualLinkProvider</deviceName>
-	<type>virtual</type>
-	<index>4</index>
-	<scale>1.0</scale>
-	<upperLimit>360.0</upperLimit>
-	<lowerLimit>-360.0</lowerLimit>
-	<upperVelocity>1.0E7</upperVelocity>
-	<lowerVelocity>-1.0E7</lowerVelocity>
-	<staticOffset>0.0</staticOffset>
-	<deviceTheoreticalMax>360.0</deviceTheoreticalMax>
-	<deviceTheoreticalMin>-360.0</deviceTheoreticalMin>
-	<isLatch>false</isLatch>
-	<indexLatch>0.0</indexLatch>
-	<isStopOnLatch>false</isStopOnLatch>
-	<homingTPS>10000000</homingTPS>
-
-	<vitamins>
-		<vitamin>
-			<name>electroMechanical</name>
-			<type>LewanSoulMotor</type>
-			<id>lx_224</id>
-		</vitamin>
-		<vitamin>
-			<name>shaft</name>
-			<type>LewanSoulHorn</type>
-			<id>round_m3_bolts</id>
-		</vitamin>
-
-	</vitamins>
-	<passive>false</passive>
-	<mass>0.0</mass>
-	<centerOfMassFromCentroid>	<x>0.0</x>
-	<y>0.0</y>
-	<z>0.0</z>
-	<rotw>1.0</rotw>
-	<rotx>-0.0</rotx>
-	<roty>-0.0</roty>
-	<rotz>-0.0</rotz></centerOfMassFromCentroid>
-	<imuFromCentroid>	<x>0.0</x>
-	<y>0.0</y>
-	<z>0.0</z>
-	<rotw>1.0</rotw>
-	<rotx>-0.0</rotx>
-	<roty>-0.0</roty>
-	<rotz>-0.0</rotz></imuFromCentroid>
-
-	<DHParameters>
-		<Delta>0.0</Delta>
-		<Theta>0.0</Theta>
-		<Radius>0.0</Radius>
-		<Alpha>-90.0</Alpha>
-	</DHParameters>
-
-</link>
-<link>
-	<name>wrist3</name>
-	<deviceName>virtualLinkProvider</deviceName>
-	<type>virtual</type>
-	<index>5</index>
-	<scale>1.0</scale>
-	<upperLimit>360.0</upperLimit>
-	<lowerLimit>-360.0</lowerLimit>
-	<upperVelocity>1.0E7</upperVelocity>
-	<lowerVelocity>-1.0E7</lowerVelocity>
-	<staticOffset>0.0</staticOffset>
-	<deviceTheoreticalMax>360.0</deviceTheoreticalMax>
-	<deviceTheoreticalMin>-360.0</deviceTheoreticalMin>
-	<isLatch>false</isLatch>
-	<indexLatch>0.0</indexLatch>
-	<isStopOnLatch>false</isStopOnLatch>
-	<homingTPS>10000000</homingTPS>
-
-	<vitamins>
-		<vitamin>
-			<name>electroMechanical</name>
-			<type>LewanSoulMotor</type>
-			<id>lx_224</id>
-		</vitamin>
-		<vitamin>
-			<name>shaft</name>
-			<type>LewanSoulHorn</type>
-			<id>round_m3_bolts</id>
-		</vitamin>
-
-	</vitamins>
-	<passive>false</passive>
-	<mass>0.0</mass>
-	<centerOfMassFromCentroid>	<x>0.0</x>
-	<y>0.0</y>
-	<z>0.0</z>
-	<rotw>1.0</rotw>
-	<rotx>-0.0</rotx>
-	<roty>-0.0</roty>
-	<rotz>-0.0</rotz></centerOfMassFromCentroid>
-	<imuFromCentroid>	<x>0.0</x>
-	<y>0.0</y>
-	<z>0.0</z>
-	<rotw>1.0</rotw>
-	<rotx>-0.0</rotx>
-	<roty>-0.0</roty>
-	<rotz>-0.0</rotz></imuFromCentroid>
-
-	<DHParameters>
-		<Delta>0.0</Delta>
-		<Theta>180.0</Theta>
-		<Radius>83.4</Radius>
-		<Alpha>0.0</Alpha>
-	</DHParameters>
-
-</link>
-<link>
-	<name>ToolFrame1</name>
-	<deviceName>virtualLinkProvider</deviceName>
-	<type>virtual</type>
-	<index>21</index>
-	<scale>1.0</scale>
-	<upperLimit>360.0</upperLimit>
-	<lowerLimit>-360.0</lowerLimit>
-	<upperVelocity>1.0E7</upperVelocity>
-	<lowerVelocity>-1.0E7</lowerVelocity>
-	<staticOffset>0.0</staticOffset>
-	<deviceTheoreticalMax>360.0</deviceTheoreticalMax>
-	<deviceTheoreticalMin>-360.0</deviceTheoreticalMin>
-	<isLatch>false</isLatch>
-	<indexLatch>0.0</indexLatch>
-	<isStopOnLatch>false</isStopOnLatch>
-	<homingTPS>10000000</homingTPS>
-
-	<vitamins>
-		<vitamin>
-			<name>electroMechanical</name>
-			<type>LewanSoulMotor</type>
-			<id>lx_224</id>
-		</vitamin>
-		<vitamin>
-			<name>shaft</name>
-			<type>LewanSoulHorn</type>
-			<id>round_m3_bolts</id>
-		</vitamin>
-
-	</vitamins>
-	<passive>false</passive>
-	<mass>0.0</mass>
-	<centerOfMassFromCentroid>	<x>0.0</x>
-	<y>0.0</y>
-	<z>0.0</z>
-	<rotw>1.0</rotw>
-	<rotx>-0.0</rotx>
-	<roty>-0.0</roty>
-	<rotz>-0.0</rotz></centerOfMassFromCentroid>
-	<imuFromCentroid>	<x>0.0</x>
-	<y>0.0</y>
-	<z>0.0</z>
-	<rotw>1.0</rotw>
-	<rotx>-0.0</rotx>
-	<roty>-0.0</roty>
-	<rotz>-0.0</rotz></imuFromCentroid>
-
-	<DHParameters>
-		<Delta>0.0</Delta>
-		<Theta>-90.0</Theta>
-		<Radius>75.0</Radius>
-		<Alpha>0.0</Alpha>
 	</DHParameters>
 
 </link>
