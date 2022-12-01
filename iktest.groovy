@@ -15,7 +15,7 @@ double[] links = [0,-35,30,0,4,0,0]
 
 //mainLimb.setDesiredJointSpaceVector(links,0)
 
-TransformNR Tip= mainLimb.calcHome().translateY(-1)
+TransformNR Tip= mainLimb.calcHome()
 
 double[] linksComuted = mainLimb.inverseKinematics(mainLimb.inverseOffset(Tip))
 //mainLimb.setDesiredJointSpaceVector(linksComuted,0)
