@@ -79,8 +79,8 @@
 	<DHParameters>
 		<Delta>0.0</Delta>
 		<Theta>0.0</Theta>
-		<Radius>0.0</Radius>
-		<Alpha>-90.0</Alpha>
+		<Radius>200.0</Radius>
+		<Alpha>0.0</Alpha>
 	</DHParameters>
 
 </link>
@@ -133,10 +133,10 @@
 	<rotz>-0.0</rotz></imuFromCentroid>
 
 	<DHParameters>
-		<Delta>565.0</Delta>
-		<Theta>180.0</Theta>
-		<Radius>0.0</Radius>
-		<Alpha>90.0</Alpha>
+		<Delta>0.0</Delta>
+		<Theta>0.0</Theta>
+		<Radius>200.0</Radius>
+		<Alpha>0.0</Alpha>
 	</DHParameters>
 
 </link>
@@ -190,9 +190,9 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>-90.0</Theta>
+		<Theta>-0.0</Theta>
 		<Radius>0.0</Radius>
-		<Alpha>90.0</Alpha>
+		<Alpha>180.0</Alpha>
 	</DHParameters>
 
 </link>
@@ -245,15 +245,15 @@
 	<rotz>-0.0</rotz></imuFromCentroid>
 
 	<DHParameters>
-		<Delta>1260.0</Delta>
+		<Delta>0.0</Delta>
 		<Theta>-0.0</Theta>
 		<Radius>0.0</Radius>
-		<Alpha>90.0</Alpha>
+		<Alpha>0.0</Alpha>
 	</DHParameters>
 
 </link>
 <link>
-	<name>ToolFrame2</name>
+	<name>ToolFrame</name>
 	<deviceName>virtualLinkProvider</deviceName>
 	<type>virtual</type>
 	<index>6</index>
@@ -498,13 +498,13 @@
 </link>
 
 <ZframeToRAS
->	<x>1167.8818453975173</x>
-	<y>736.8018696982853</y>
-	<z>296.0000000000011</z>
-	<rotw>4.749140214731705E-16</rotw>
-	<rotx>-0.7552545795552845</rotx>
-	<roty>0.6554315525367774</roty>
-	<rotz>5.038281144848008E-16</rotz>
+>	<x>184.7191156283921</x>
+	<y>-227.72187925367953</y>
+	<z>-296.0000000000003</z>
+	<rotw>0.07887338581833134</rotw>
+	<rotx>-1.5180469955132935E-17</rotx>
+	<roty>7.048382333889753E-16</roty>
+	<rotz>-0.9968846417763455</rotz>
 </ZframeToRAS>
 
 <baseToZframe>
@@ -699,13 +699,13 @@
 </link>
 
 <ZframeToRAS
->	<x>1167.8818453975173</x>
-	<y>736.8018696982853</y>
-	<z>296.0000000000011</z>
-	<rotw>4.749140214731705E-16</rotw>
-	<rotx>-0.7552545795552845</rotx>
-	<roty>0.6554315525367774</roty>
-	<rotz>5.038281144848008E-16</rotz>
+>	<x>184.7191156283921</x>
+	<y>-227.72187925367953</y>
+	<z>-296.0000000000003</z>
+	<rotw>0.07887338581833134</rotw>
+	<rotx>-1.5180469955132935E-17</rotx>
+	<roty>7.048382333889753E-16</roty>
+	<rotz>-0.9968846417763455</rotz>
 </ZframeToRAS>
 
 <baseToZframe>
@@ -900,13 +900,13 @@
 </link>
 
 <ZframeToRAS
->	<x>1167.8818453975173</x>
-	<y>736.8018696982853</y>
-	<z>296.0000000000011</z>
-	<rotw>4.749140214731705E-16</rotw>
-	<rotx>-0.7552545795552845</rotx>
-	<roty>0.6554315525367774</roty>
-	<rotz>5.038281144848008E-16</rotz>
+>	<x>184.7191156283921</x>
+	<y>-227.72187925367953</y>
+	<z>-296.0000000000003</z>
+	<rotw>0.07887338581833134</rotw>
+	<rotx>-1.5180469955132935E-17</rotx>
+	<roty>7.048382333889753E-16</roty>
+	<rotz>-0.9968846417763455</rotz>
 </ZframeToRAS>
 
 <baseToZframe>
@@ -1101,13 +1101,13 @@
 </link>
 
 <ZframeToRAS
->	<x>1167.8818453975173</x>
-	<y>736.8018696982853</y>
-	<z>296.0000000000011</z>
-	<rotw>4.749140214731705E-16</rotw>
-	<rotx>-0.7552545795552845</rotx>
-	<roty>0.6554315525367774</roty>
-	<rotz>5.038281144848008E-16</rotz>
+>	<x>184.7191156283921</x>
+	<y>-227.72187925367953</y>
+	<z>-296.0000000000003</z>
+	<rotw>0.07887338581833134</rotw>
+	<rotx>-1.5180469955132935E-17</rotx>
+	<roty>7.048382333889753E-16</roty>
+	<rotz>-0.9968846417763455</rotz>
 </ZframeToRAS>
 
 <baseToZframe>
@@ -1123,13 +1123,13 @@
 </appendage>
 
 <ZframeToRAS>
-	<x>1167.8818453975173</x>
-	<y>736.8018696982853</y>
-	<z>296.0000000000011</z>
-	<rotw>4.749140214731704E-16</rotw>
-	<rotx>-0.7552545795552845</rotx>
-	<roty>0.6554315525367774</roty>
-	<rotz>5.038281144848008E-16</rotz>
+	<x>184.7191156283921</x>
+	<y>-227.72187925367953</y>
+	<z>-296.0000000000003</z>
+	<rotw>0.07887338581833134</rotw>
+	<rotx>-1.518046995513293E-17</rotx>
+	<roty>7.048382333889753E-16</roty>
+	<rotz>-0.9968846417763455</rotz>
 </ZframeToRAS>
 
 <baseToZframe>
