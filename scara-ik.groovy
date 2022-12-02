@@ -147,6 +147,8 @@ public class scriptJavaIKModel implements DhInverseSolver {
 	double normalizeBase(double calc,double upper, double lower, int depth) {
 		if(calc<upper && calc>lower)
 			return calc;
+		if(depth>2)
+			return calc;
 		def local = (depth==0?360:-360)
 		return normalizeBase(calc+local,upper,lower,depth+1)
 	}
