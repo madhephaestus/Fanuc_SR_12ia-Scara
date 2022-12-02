@@ -96,7 +96,7 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		x = newCenter.getX();
 		if(debug)println "newCenter "+newCenter
 		if(newCenter.getZ()<chain.getlowerLimits()[2]) {
-			throw new RuntimeException( "Dug too deep and too greedily!")
+			throw new RuntimeException( "Dug too greedily and too deep!")
 		}
 		if(newCenter.getZ()>chain.getUpperLimits()[2]) {
 			throw new RuntimeException( "Alas, Icrus flew too high!")
