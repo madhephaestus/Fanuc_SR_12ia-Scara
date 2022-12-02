@@ -28,7 +28,9 @@ import org.apache.commons.math3.geometry.euclidean.threed.RotationOrder
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 
 public class scriptJavaIKModel implements DhInverseSolver {
-	boolean debug = true;
+	private def l0Length
+	private def l1Length
+	boolean debug = false;
 	CSG blue =null;
 	CSG green =null;
 	CSG red =null;
@@ -93,6 +95,12 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		y = newCenter.getY();
 		x = newCenter.getX();
 		if(debug)println "newCenter "+newCenter
+		if(newCenter.getZ()<chain.getlowerLimits()[2]) {
+			throw new RuntimeException( "Dug too deep and too greedily!")
+		}
+		if(newCenter.getZ()>chain.getUpperLimits()[2]) {
+			throw new RuntimeException( "Alas, Icrus flew too high!")
+		}
 		//xyz now are at the wrist center
 		// Compute the xy plane projection of the tip
 		// this is the angle of the tipto the base link
@@ -116,18 +124,33 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		double wristVect = tipXPlane.getX();
 		if(debug)println "Hypotinuse of elbow "+wristVect
 		// Use the law of cosines to calculate the elbow and the shoulder tilt
-
-		double shoulderTiltAngle =solveForAngleLawOfCosine(length(l0Offset),wristVect,length(l1Offset))
-
-		double elbowTiltAngle =solveForAngleLawOfCosine(length(l0Offset),length(l1Offset),wristVect)
+		l0Length = length(l0Offset)
+		l1Length = length(l1Offset)
+		if(wristVect>(l1Length+l0Length)) {
+			Thread.sleep(10)
+			throw new RuntimeException( "Reach too far! "+l1Length+" + "+l0Length+" is > "+wristVect)
+		}
 		
-		jointSpaceVector[0]=-(shoulderTiltAngle-a1d)
+
+		double shoulderTiltAngle =solveForAngleLawOfCosine(l0Length,wristVect,l1Length)
+
+		double elbowTiltAngle =solveForAngleLawOfCosine(l0Length,l1Length,wristVect)
+		
+		jointSpaceVector[0]=normalizeBase(-(shoulderTiltAngle-a1d),chain.getUpperLimits()[0], chain.getlowerLimits()[0], 0)
 		jointSpaceVector[1]=-(elbowTiltAngle-Math.toDegrees(links.get(1).getTheta()))
 		jointSpaceVector[2]=newCenter.getZ()
 		jointSpaceVector[3]=-Math.toDegrees(target.getRotation().getRotationAzimuth())+jointSpaceVector[0]+jointSpaceVector[1]+Math.toDegrees(links.get(1).getTheta())
 		jointSpaceVector[4]=0
 		return jointSpaceVector;
 	}
+	
+	double normalizeBase(double calc,double upper, double lower, int depth) {
+		if(calc<upper && calc>lower)
+			return calc;
+		def local = (depth==0?360:-360)
+		return normalizeBase(calc+local,upper,lower,depth+1)
+	}
+	
 	double solveForAngleLawOfCosine(double sideCCWtoAngle, double sideCWtoAngle, double sideOppisiteAngle) {
 		double a=sideCCWtoAngle
 		double b= sideCWtoAngle;
