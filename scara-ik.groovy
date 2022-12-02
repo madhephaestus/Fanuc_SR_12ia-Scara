@@ -42,8 +42,6 @@ public class scriptJavaIKModel implements DhInverseSolver {
 	@Override
 	public double[] inverseKinematics(TransformNR target, double[] jointSpaceVector, DHChain chain) {
 		ArrayList<DHLink> links = chain.getLinks();
-		if(links.size()==3 || (links.size()==4 && (Math.abs(links.get(2).alpha)<0.001)))
-			return inverseKinematics34dof(target,jointSpaceVector,chain);
 		return inverseKinematics6dof(target,jointSpaceVector,chain);
 	}
 	TransformNR linkOffset(DHLink link) {
@@ -139,8 +137,10 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		jointSpaceVector[0]=normalizeBase(-(shoulderTiltAngle-a1d),chain.getUpperLimits()[0], chain.getlowerLimits()[0], 0)
 		jointSpaceVector[1]=-(elbowTiltAngle-Math.toDegrees(links.get(1).getTheta()))
 		jointSpaceVector[2]=newCenter.getZ()
-		jointSpaceVector[3]=-Math.toDegrees(target.getRotation().getRotationAzimuth())+jointSpaceVector[0]+jointSpaceVector[1]+Math.toDegrees(links.get(1).getTheta())
-		jointSpaceVector[4]=0
+		if(jointSpaceVector.length>3)
+			jointSpaceVector[3]=-Math.toDegrees(target.getRotation().getRotationAzimuth())+jointSpaceVector[0]+jointSpaceVector[1]+Math.toDegrees(links.get(1).getTheta())
+		if(jointSpaceVector.length>4)
+			jointSpaceVector[4]=0
 		return jointSpaceVector;
 	}
 	
