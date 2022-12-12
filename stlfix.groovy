@@ -14,7 +14,6 @@ CSG servo  = Vitamins.get(servoFile)
 			.toYMin()
 			.toZMax()
 servo=servo
-			.movez(194)
 			.movey(-servo.getTotalY()/2)
 			.movex(-servo.getTotalX()/2)
 String filename =servoFile.getAbsolutePath()
