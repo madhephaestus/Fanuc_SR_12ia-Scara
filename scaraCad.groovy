@@ -83,12 +83,12 @@ return new ICadGenerator(){
 					parts.add(rotZPlate)
 					
 				}
-				else if(arg1==2 ) {
+				else if(arg1==3 ) {
 					CSG rotZPlate =  Vitamins.get(ScriptingEngine.fileFromGit(
 						"https://github.com/madhephaestus/Fanuc_SR_12ia-Scara.git",
 						"stl/"+type+"/"+"l3.STL"))
 					rotZPlate=rotZPlate
-
+								.roty(180)
 					rotZPlate.setColor(Color.SILVER)
 					parts.add(rotZPlate)
 				}
