@@ -68,7 +68,6 @@ return new ICadGenerator(){
 						CSG link  = Vitamins.get(ScriptingEngine.fileFromGit(
 								"https://github.com/madhephaestus/Fanuc_SR_12ia-Scara.git",
 								name))
-						link.setManipulator(manipulator)
 						link.setColor(Color.web("#f3da0b"))
 						parts.add(link)
 					}
@@ -77,10 +76,9 @@ return new ICadGenerator(){
 						"https://github.com/madhephaestus/Fanuc_SR_12ia-Scara.git",
 						"stl/"+type+"/"+"l2.STL"))
 
-					if(!arg0.getScriptingName().endsWith("a")) {
-						rotZPlate=rotZPlate.rotz(180)
-					}
-					rotZPlate.setManipulator(manipulator)
+					
+					rotZPlate=rotZPlate.rotz(-90)
+					
 					rotZPlate.setColor(Color.web("#f3da0b"))
 					parts.add(rotZPlate)
 					
@@ -91,10 +89,14 @@ return new ICadGenerator(){
 						"stl/"+type+"/"+"l3.STL"))
 					rotZPlate=rotZPlate
 
-					rotZPlate.setManipulator(manipulator)
 					rotZPlate.setColor(Color.SILVER)
 					parts.add(rotZPlate)
-					
+				}
+				for(int i=0;i<parts.size();i++) {
+					def p = parts.get(i)
+					p=moveDHValues(p,dh)
+					p.setManipulator(manipulator)
+					parts.set(i,p )
 				}
 				
 				MobileBase handMB = arg0.getSlaveMobileBase(arg1)
