@@ -58,99 +58,50 @@ return new ICadGenerator(){
 				
 				DHLink dh = arg0.getDhLink(arg1)
 				Affine manipulator = arg0.getLinkObjectManipulator(arg1)
+				String type = "sr-12ia"
+				if(arg0.getScriptingName().toLowerCase().contains("staubli")) {
+					type = "ts2-100-vb"
+				}
 				if(arg1==0) {
 					if(!arg0.getScriptingName().endsWith("a")) {
-						def name = "stl/link_"+(arg1+1)+".STL"
-						println "Loading "+name
-						def linkcenter=95
-						def ballcenter = 10
+						def name = "stl/"+type+"/"+"l1.STL"
 						CSG link  = Vitamins.get(ScriptingEngine.fileFromGit(
-								"https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git",
-								name)).roty(194).toXMin().toYMin().toZMax()
-								.movez(linkcenter)
-								.movex(-linkcenter+2)
-								.roty(90)
-								.rotz(180)
-								.toYMin()
-								.movey(-ballcenter)
+								"https://github.com/madhephaestus/Fanuc_SR_12ia-Scara.git",
+								name))
 						link.setManipulator(manipulator)
-						link.setColor(Color.SILVER)
+						link.setColor(Color.web("#f3da0b"))
 						parts.add(link)
 					}
-				}else if(arg1==2 && !arg0.getScriptingName().contains("fourthAxis")) {
+				}else if(arg1==1 ) {
 					CSG rotZPlate =  Vitamins.get(ScriptingEngine.fileFromGit(
-						"https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git",
-						"stl/passive-a.stl"))
-						.roty(-28.5)
-						.rotx(-1)
-					rotZPlate=rotZPlate
-								.movex(-rotZPlate.getCenterX())
-								.movey(-rotZPlate.getCenterY())
-								.toZMin()
-								//.movex(-20)
-								.movez(-20)
+						"https://github.com/madhephaestus/Fanuc_SR_12ia-Scara.git",
+						"stl/"+type+"/"+"l2.STL"))
+
 					if(!arg0.getScriptingName().endsWith("a")) {
 						rotZPlate=rotZPlate.rotz(180)
 					}
 					rotZPlate.setManipulator(manipulator)
-					rotZPlate.setColor(Color.BLACK)
+					rotZPlate.setColor(Color.web("#f3da0b"))
 					parts.add(rotZPlate)
 					
-				}else if(arg1==2 && arg0.getScriptingName().contains("fourthAxis")) {
+				}
+				else if(arg1==2 ) {
 					CSG rotZPlate =  Vitamins.get(ScriptingEngine.fileFromGit(
-						"https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git",
-						"stl/motor4.stl"))
-						.roty(180-28.5)
-						.rotx(1.5)
-						.rotz(180)
+						"https://github.com/madhephaestus/Fanuc_SR_12ia-Scara.git",
+						"stl/"+type+"/"+"l3.STL"))
 					rotZPlate=rotZPlate
-								.movex(-rotZPlate.getCenterX()-30)
-								.movey(-rotZPlate.getCenterY()+1)
-								.toZMin()
-								.movez(-90)
-								
-					if(!arg0.getScriptingName().endsWith("a")) {
-						rotZPlate=rotZPlate.rotz(180)
-					}
-					rotZPlate.setManipulator(manipulator)
-					rotZPlate.setColor(Color.SILVER)
-					parts.add(rotZPlate)
-					
-				}else if(arg1==6) {
-					CSG eoatPlate  = Vitamins.get(ScriptingEngine.fileFromGit(
-						"https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git",
-						"stl/endPlate.STL"))
-					eoatPlate=eoatPlate
-						.movex(-eoatPlate.getCenterX())
-						.movey(-eoatPlate.getCenterY())
-						.toZMax()
-						.rotx(180)
-						.movex(10)
-						.movez(-20)
-					eoatPlate.setManipulator(manipulator)
-					eoatPlate.setColor(Color.SILVER)
-					parts.add(eoatPlate)
-					
-				}else if(arg1==7) {
-					MobileBase handMB = arg0.getSlaveMobileBase(arg1)
-					parts.addAll(getHandParts(handMB))
-					
-					CSG rotZPlate =  Vitamins.get(ScriptingEngine.fileFromGit(
-						"https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git",
-						"stl/rotzLink.STL"))
-					rotZPlate=rotZPlate
-								.movex(-rotZPlate.getCenterX())
-								.movey(-rotZPlate.getCenterY())
-								.toZMin()
-								.movez(160)
-					
+
 					rotZPlate.setManipulator(manipulator)
 					rotZPlate.setColor(Color.SILVER)
 					parts.add(rotZPlate)
 					
 				}
+				
+				MobileBase handMB = arg0.getSlaveMobileBase(arg1)
+				if(handMB!=null)
+					parts.addAll(getHandParts(handMB))
 				for(int i=0;i<parts.size();i++) {
-					parts.get(i).setName("Fanuc link "+arg1+" part "+i)
+					parts.get(i).setName(type+" link "+arg1+" part "+i)
 				}
 				if(parts.size()==0)parts.add(new Cube(0.001).toCSG())
 				return parts;
@@ -159,16 +110,14 @@ return new ICadGenerator(){
 			@Override
 			public ArrayList<CSG> generateBody(MobileBase arg0) {
 				ArrayList<CSG> parts =  new ArrayList<>();
+				String type = "sr-12ia"
+				if(arg0.getScriptingName().toLowerCase().contains("staubli")) {
+					type = "ts2-100-vb"
+				}
 				CSG base  = Vitamins.get(ScriptingEngine.fileFromGit(
-						"https://github.com/madhephaestus/Fanuc_Delta_DR-3iB.git",
-						"stl/BASE.STL"))
-						.roty(180)
-						.toZMax()
-						.movez(100)
-				base=base.movey(-base.getCenterY())
-				base=base.movex(-base.getCenterX())
-						.movex(-85)
-						.movey(20)
+						"https://github.com/madhephaestus/Fanuc_SR_12ia-Scara.git",
+						"stl/"+type+"/"+"base.STL"))
+
 				Affine manipulator = arg0.getRootListener()
 				base.setManipulator(manipulator)
 
