@@ -125,7 +125,7 @@ return new ICadGenerator(){
 
 				parts.add(base)
 				for(CSG part :parts) {
-					part.setColor(Color.DARKGREY)
+					part.setColor(Color.web("#2f2f2f"))
 				}
 				for(int i=0;i<parts.size();i++) {
 					parts.get(i).setName("Fanuc link base part "+i)
