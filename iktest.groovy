@@ -11,7 +11,7 @@ MobileBase base=DeviceManager.getSpecificDevice( "Fanuc_Scara_SR_12ia",{Scriptin
 
 
 DHParameterKinematics mainLimb = base.getAllDHChains().get(0)
-double[] links =[143.77	, 045.61	, 096.00	, 153.90	, 000.00	]
+double[] links =[143.77	, 045.61	, -96.00	, 153.90	, 000.00	]
 
 //mainLimb.setDesiredJointSpaceVector(links,0)
 

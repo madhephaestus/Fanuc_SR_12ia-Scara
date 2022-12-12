@@ -16,10 +16,10 @@ CSG servo  = Vitamins.get(servoFile)
 servo=servo
 			.movey(-servo.getTotalY()/2)
 			.movex(-servo.getTotalY()/2)
-			.roty(180)
 String filename =servoFile.getAbsolutePath()
 println filename
 FileUtil.write(Paths.get(filename),
 		servo.toStlString());
 println "STL EXPORT to "+filename
+Vitamins.clear()
 return servo;

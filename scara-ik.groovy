@@ -30,7 +30,7 @@ import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 public class scriptJavaIKModel implements DhInverseSolver {
 	private def l0Length
 	private def l1Length
-	boolean debug = false;
+	boolean debug = true;
 	CSG blue =null;
 	CSG green =null;
 	CSG red =null;
@@ -50,8 +50,7 @@ public class scriptJavaIKModel implements DhInverseSolver {
 	double length(TransformNR tr) {
 		return Math.sqrt(
 				Math.pow(tr.getX(), 2)+
-				Math.pow(tr.getY(), 2)+
-				Math.pow(tr.getZ(), 2)
+				Math.pow(tr.getY(), 2)
 				);
 	}
 	public double[] inverseKinematics6dof(TransformNR target, double[] jointSpaceVector, DHChain chain) {
@@ -93,12 +92,7 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		y = newCenter.getY();
 		x = newCenter.getX();
 		if(debug)println "newCenter "+newCenter
-		if(newCenter.getZ()<chain.getlowerLimits()[2]) {
-			throw new RuntimeException( "Dug too greedily and too deep!")
-		}
-		if(newCenter.getZ()>chain.getUpperLimits()[2]) {
-			throw new RuntimeException( "Alas, Icrus flew too high!")
-		}
+
 		//xyz now are at the wrist center
 		// Compute the xy plane projection of the tip
 		// this is the angle of the tipto the base link
@@ -133,10 +127,23 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		double shoulderTiltAngle =solveForAngleLawOfCosine(l0Length,wristVect,l1Length)
 
 		double elbowTiltAngle =solveForAngleLawOfCosine(l0Length,l1Length,wristVect)
+
+		double zoffset = links.get(0).getD() + links.get(1).getD()+ links.get(2).getD()
+		double targetZMotor = (newCenter.getZ() - zoffset)
+		
+		if(debug)println " Tip at home  "+zoffset
+		if(debug)println " Motion offset "+newCenter.getZ()
+		if(debug)println " Setpoint  "+targetZMotor
+		if(targetZMotor<chain.getlowerLimits()[2]) {
+			throw new RuntimeException( "Dug too greedily and too deep!"+targetZMotor+" < " + chain.getlowerLimits()[2])
+		}
+		if(targetZMotor>chain.getUpperLimits()[2]) {
+			throw new RuntimeException( "Alas, Icrus flew too high! "+targetZMotor+ " > "+ chain.getUpperLimits()[2] )
+		}
 		
 		jointSpaceVector[0]=normalizeBase(-(shoulderTiltAngle-a1d),chain.getUpperLimits()[0], chain.getlowerLimits()[0], 0)
 		jointSpaceVector[1]=-(elbowTiltAngle-Math.toDegrees(links.get(1).getTheta()))
-		jointSpaceVector[2]=newCenter.getZ()
+		jointSpaceVector[2]=targetZMotor
 		if(jointSpaceVector.length>3)
 			jointSpaceVector[3]=-Math.toDegrees(target.getRotation().getRotationAzimuth())+jointSpaceVector[0]+jointSpaceVector[1]+Math.toDegrees(links.get(1).getTheta())
 		if(jointSpaceVector.length>4)
