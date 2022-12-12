@@ -3,8 +3,8 @@ import com.neuronrobotics.bowlerstudio.vitamins.Vitamins
 
 import eu.mihosoft.vrl.v3d.CSG
 String type = "sr-12ia"
-type = "ts2-100-vb"
-def name = "stl/"+type+"/"+"l1.STL"
+//type = "ts2-100-vb"
+def name = "stl/"+type+"/"+"l2.STL"
 File servoFile = ScriptingEngine.fileFromGit(
 	"https://github.com/madhephaestus/Fanuc_SR_12ia-Scara.git",
 	name);
@@ -14,6 +14,7 @@ CSG servo  = Vitamins.get(servoFile)
 			.toYMin()
 			.toZMin()
 servo=servo
+			.movez(-149)
 			.movey(-servo.getTotalY()/2)
 			.movex(-servo.getTotalY()/2)
 String filename =servoFile.getAbsolutePath()
