@@ -146,7 +146,7 @@
 	<type>pid-prismatic</type>
 	<index>2</index>
 	<scale>1.0</scale>
-	<upperLimit>0.0</upperLimit>
+	<upperLimit>-55</upperLimit>
 	<lowerLimit>-360.0</lowerLimit>
 	<upperVelocity>1.0E7</upperVelocity>
 	<lowerVelocity>-1.0E7</lowerVelocity>
