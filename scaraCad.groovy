@@ -116,16 +116,16 @@ return new ICadGenerator(){
 				if(arg0.getScriptingName().toLowerCase().contains("staubli")) {
 					type = "ts2-100-vb"
 				}
-				CSG base  = Vitamins.get(ScriptingEngine.fileFromGit(
+				parts.add(Vitamins.get(ScriptingEngine.fileFromGit(
 						"https://github.com/madhephaestus/Fanuc_SR_12ia-Scara.git",
-						"stl/"+type+"/"+"base.STL"))
-
-				Affine manipulator = arg0.getRootListener()
-				base.setManipulator(manipulator)
-
-				parts.add(base)
+						"stl/"+type+"/"+"base.STL")))
+				parts.add(Vitamins.get(ScriptingEngine.fileFromGit(
+					"https://github.com/madhephaestus/Fanuc_SR_12ia-Scara.git",
+					"stl/cell.STL")))
 				for(CSG part :parts) {
 					part.setColor(Color.web("#2f2f2f"))
+					Affine manipulator = arg0.getRootListener()
+					part.setManipulator(manipulator)
 				}
 				for(int i=0;i<parts.size();i++) {
 					parts.get(i).setName("Fanuc link base part "+i)
