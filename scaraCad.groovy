@@ -119,14 +119,17 @@ return new ICadGenerator(){
 				parts.add(Vitamins.get(ScriptingEngine.fileFromGit(
 						"https://github.com/madhephaestus/Fanuc_SR_12ia-Scara.git",
 						"stl/"+type+"/"+"base.STL")))
-				parts.add(Vitamins.get(ScriptingEngine.fileFromGit(
-					"https://github.com/madhephaestus/Fanuc_SR_12ia-Scara.git",
-					"stl/cell.STL")))
+
 				for(CSG part :parts) {
 					part.setColor(Color.web("#2f2f2f"))
 					Affine manipulator = arg0.getRootListener()
 					part.setManipulator(manipulator)
 				}
+				CSG get = Vitamins.get(ScriptingEngine.fileFromGit(
+					"https://github.com/madhephaestus/Fanuc_SR_12ia-Scara.git",
+					"stl/cell.STL"))
+							get.setColor(Color.SILVER)
+							parts.add(get)
 				for(int i=0;i<parts.size();i++) {
 					parts.get(i).setName("Fanuc link base part "+i)
 				}
