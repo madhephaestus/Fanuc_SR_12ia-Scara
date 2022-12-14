@@ -30,7 +30,7 @@ import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 public class scriptJavaIKModel implements DhInverseSolver {
 	private def l0Length
 	private def l1Length
-	boolean debug = true;
+	boolean debug = false;
 	CSG blue =null;
 	CSG green =null;
 	CSG red =null;
