@@ -19,7 +19,6 @@
 
 <name>DeltaChain1</name>
 
-<parallelGroup>delta</parallelGroup>
 	<cadEngine>
 		<git>https://github.com/madhephaestus/Fanuc_SR_12ia-Scara.git</git>
 		<file>scaraCad.groovy</file>
